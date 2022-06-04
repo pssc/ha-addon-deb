@@ -28,7 +28,7 @@ COPY rootfs/ /
 
 
 RUN apt-get update \
-    && apt-get upgrade \
+    && apt-get upgrade -y -o Dpkg::Options::="--force-confold" \
     && apt-get -y install --no-install-recommends \
 		curl \
 		wget \
