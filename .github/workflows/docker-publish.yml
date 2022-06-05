@@ -74,7 +74,7 @@ jobs:
         uses: home-assistant/builder@2022.03.1
         with:
           args: |
-            --adm64 \
+            --amd64 \
             --target deb \
             --docker-hub pssc
       #- name: Build and push Docker image
