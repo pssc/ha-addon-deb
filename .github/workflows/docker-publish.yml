@@ -68,8 +68,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      # Build and push Docker image with Buildx (don't push on PR)
-      # https://github.com/docker/build-push-action
+
       - name: Home Assistant builder
         uses: home-assistant/builder@2022.03.1
         with:
@@ -77,6 +76,9 @@ jobs:
             --amd64 \
             --target deb \
             --docker-hub pssc
+            
+      # Build and push Docker image with Buildx (don't push on PR)
+      # https://github.com/docker/build-push-action
       #- name: Build and push Docker image
       #  id: build-and-push
       #  uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
