@@ -35,7 +35,11 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          path: dev
+          persist-credentials: false
+
     
 
       # Install the cosign tool except on PR
@@ -74,8 +78,7 @@ jobs:
         with:
           args: |
             --amd64 \
-            --target deb \
-            --docker-hub pssc
+            --target dev/deb
             
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
