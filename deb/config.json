@@ -66,5 +66,6 @@
     "dirs": ["str?"],
     "init_commands": ["str?"],
     "packages": ["str?"]
-  }
+  },
+  "image": "pssc/ha-addon-deb-{arch}"
 }
