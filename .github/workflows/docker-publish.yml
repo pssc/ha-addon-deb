@@ -69,14 +69,32 @@ jobs:
       #  with:
       #    images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: Home Assistant builder
+      - name: Home Assistant builder x86
         uses: home-assistant/builder@2022.03.1
         with:
           args: |
-            --all \
+            --amd64 --i386 \
             --target dev/deb \
             -i pssc/deb/{arch}
             
+      - name: Home Assistant builder arm
+        uses: home-assistant/builder@2022.03.1
+        with:
+          args: |
+            --armv7 --aarch64 --armhf \
+            --target dev/deb \
+            -i pssc/deb/{arch}
+            
+      # Build and push Docker image with Buildx (don't push on PR)
+      # https://github.com/docker/build-push-action
+      #- name: Build and push Docker image
+      #  id: build-and-push
+      #  uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+      #  with:
+      #    context: deb
+      #    push: ${{ github.event_name != 'pull_request' }}
+      #    tags: ${{ steps.meta.outputs.tags }}
+      #    labels: ${{ steps.meta.outputs.labels }}
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       #- name: Build and push Docker image
