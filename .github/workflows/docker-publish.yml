@@ -74,7 +74,12 @@ jobs:
         with:
           args: |
             --amd64 \
-            --target dev/deb
+            --privileged \
+  -v ~/.docker:/root/.docker \
+  -v dev/deb:/data \
+  homeassistant/amd64-builder \
+  -t /data
+            #   --target dev/deb
             
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
