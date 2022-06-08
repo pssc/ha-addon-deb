@@ -51,8 +51,8 @@ RUN apt-get update \
 
 RUN echo deb https://download.docker.com/linux/debian bullseye stable >/etc/apt/sources.list.d/docker.list && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
-    apt-get update && apt-get -y install --no-install-recommends \
-                docker-ce-cli 
+    apt-get update && (apt-get -y install --no-install-recommends \
+                docker-ce-cli || true)
 
 RUN echo deb http://ftp.uni-kl.de/debian-multimedia/ stable main >/etc/apt/sources.list.d/debian-multimedia.list && \
     apt-get update -oAcquire::AllowInsecureRepositories=true \
