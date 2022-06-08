@@ -73,7 +73,7 @@ jobs:
         uses: home-assistant/builder@2022.03.1
         with:
           args: |
-            --amd64 \
+            --all \
             --target dev/deb \
             -i pssc/deb/{arch}
             
