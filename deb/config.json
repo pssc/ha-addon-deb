@@ -41,7 +41,7 @@
   "panel_title": "deb",
   "stage": "experimental",
   "options": {
-	  "links": [],
+          "links": [],
           "mounts": [],
           "dirs": [],
           "init_commands": [],
