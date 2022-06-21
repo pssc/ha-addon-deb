@@ -12,11 +12,10 @@
   "apparmor": false,
   "audio": true,
   "ports": {
-	  "22/tcp": null
-
+      "22/tcp": null
   },
   "ports_description": {
-	  "22/tcp": "SSH Access"
+      "22/tcp": "SSH Access"
   },
   "timeout": 180,
   "map": [
@@ -45,8 +44,8 @@
 	  "links": [],
           "mounts": [],
           "dirs": [],
-	  "init_commands": [],
-	  "packages": []
+          "init_commands": [],
+          "packages": []
   },
   "schema": {
     "ssl": "bool?",
