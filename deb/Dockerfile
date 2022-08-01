@@ -54,18 +54,6 @@ RUN echo deb https://download.docker.com/linux/debian bullseye stable >/etc/apt/
     apt-get update && (apt-get -y install --no-install-recommends \
                 docker-ce-cli || true)
 
-RUN echo deb http://ftp.uni-kl.de/debian-multimedia/ stable main >/etc/apt/sources.list.d/debian-multimedia.list && \
-    apt-get update -oAcquire::AllowInsecureRepositories=true \
-    && apt-get --allow-unauthenticated -y install --no-install-recommends deb-multimedia-keyring \
-    && apt-get update \
-    && apt-get -y install --no-install-recommends \
-    	abcde \
-        eject \
-        lame \
-        eyed3 \
-        aacgain \
-        glyrc
-
 #RUN curl -sSL https://get.haskellstack.org/ | sh && \
 #RUN apt-get install --no-install-recommends haskell-stack && \
 #    stack upgrade && \
@@ -126,16 +114,8 @@ RUN if [ -z "${debug}" -o "${debug}" = "false" ];then apt-get -y remove \
 #ENV TEMPDIR /tmpfs/
 # root in tmp?
 
-# HOME still said /root
+# HOME /root to stable store.
 #RUN sed -i -e "s#:/root:#:/data/root:#" /etc/passwd
-
-VOLUME /data
-VOLUME /share
-VOLUME /backup
-VOLUME /config
-VOLUME /ssl
-#VOLUME /tmpfs
-VOLUME /media
 
 # Build arguments
 ARG BUILD_DATE
