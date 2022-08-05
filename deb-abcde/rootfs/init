@@ -1,3 +1,0 @@
-#!/bin/sh
-mount -t tmpfs tmpfs /run rw,nosuid,nodev,mode=755
-exec /s6init "$@"

@@ -1,8 +1,8 @@
 {
-  "name": "Debian Shell",
-  "version": "11.2.11",
-  "slug": "deb",
-  "description": "Flexable Debian based shell with ttyd and customisation options.",
+  "name": "Abcde",
+  "version": "0.0.4",
+  "slug": "deb-abcde",
+  "description": "Grab an entire CD and compress it to Ogg/Vorbis, MP3, FLAC, AAC, Ogg/Speex and/or MPP/MP+(Musepack) format via the debian shell.",
   "url": "https://github.com/pssc/ha-addon-deb/",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "services",
@@ -35,8 +35,8 @@
   "backup_exclude": [ "/data/music", "/data/mount", "/data/mnt", "/data/nobackup", "/data/force_build" ],
   "ingress": true,
   "ingress_port": 0,
-  "panel_icon": "mdi:debian",
-  "panel_title": "deb",
+  "panel_icon": "mdi:disc",
+  "panel_title": "abcde",
   "stage": "experimental",
   "options": {
           "links": [],
@@ -63,6 +63,5 @@
     "dirs": ["str?"],
     "init_commands": ["str?"],
     "packages": ["str?"]
-  },
-  "image": "ghcr.io/pssc/ha-addon-deb-{arch}"
+  }
 }

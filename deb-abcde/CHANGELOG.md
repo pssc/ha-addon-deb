@@ -1,8 +1,8 @@
-## [0.0.10] 2022-01-04
+## [0.0.1] 2022-08-03
 
 
 ### Changes
- - Debian Base upgrade to 5.2.2
+ - Fist cut for abcde terminal app basic shell with tools installed
 
 ### Added
 ### Fixes
