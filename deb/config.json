@@ -1,6 +1,6 @@
 {
   "name": "Debian Shell",
-  "version": "11.2.14",
+  "version": "11.2.15",
   "slug": "deb",
   "description": "Flexable Debian based shell with ttyd and customisation options.",
   "url": "https://github.com/pssc/ha-addon-deb/",
@@ -27,6 +27,7 @@
   "tmpfs": true,
   "docker_api": true,
   "hassio_api": true,
+  "hassio_role": "manager",
   "udev":true,
   "full_access": true,
   "homeassistant_api": true,
