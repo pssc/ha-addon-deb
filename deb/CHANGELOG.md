@@ -6,7 +6,7 @@
  - ha cli 4.19.0
 
 ### Added
- - oh by bash
+ - oh my bash
 
 ### Fixes
  - Fix hass-cli to 0.9.3 as 0.9.4 borks
