@@ -67,7 +67,7 @@ RUN if [[ ! -z "${debug}" ]];then apt-get -y install --no-install-recommends vim
 
 RUN mkdir -p /sources && cd /sources \
     && apt-get -y install --no-install-recommends build-essential cmake git libjson-c-dev libwebsockets-dev \
-    && git clone --depth 1 --branch 1.6.3 https://github.com/tsl0922/ttyd.git \
+    && git clone --depth 1 --branch 1.7.1 https://github.com/tsl0922/ttyd.git \
     && cd ttyd && mkdir build && cd build \
     && cmake .. \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
@@ -76,7 +76,7 @@ RUN mkdir -p /sources && cd /sources \
     && make && make install
 
 RUN curl -L -s -o /usr/bin/ha \
-        "https://github.com/home-assistant/cli/releases/download/4.17.0/ha_${BUILD_ARCH}" \
+        "https://github.com/home-assistant/cli/releases/download/4.19.0/ha_${BUILD_ARCH}" \
     && chmod a+x /usr/bin/ha \
     && ha completion > /usr/share/bash-completion/completions/ha
 
@@ -86,11 +86,15 @@ RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools py
 
 RUN apt-get install -y --no-install-recommends libjson-rpc-perl && cd /sources && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /sources/squeezy
 
+# oh-my-bash
+RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --prefix=/usr/local --unattended
+
+# Patch
 COPY patch /sources/
 
 RUN for i in /sources/*.patch;do patch -d / -p1 -i $i;done || true
 
-#Cleanup
+# Cleanup
 RUN if [ -z "${debug}" -o "${debug}" = "false" ];then apt-get -y remove \
         git \
         wget \
