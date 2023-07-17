@@ -1,3 +1,10 @@
+## [12.0.17] 2023-07-17
+
+### Changes
+ - Debian Base upgrade to 7.0.0
+ - ttyd 1.7.3
+ - ha cli 4.27.0
+
 ## [11.12.17] 2022-08-20
 
 ### Changes

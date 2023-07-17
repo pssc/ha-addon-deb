@@ -67,7 +67,7 @@ RUN if [[ ! -z "${debug}" ]];then apt-get -y install --no-install-recommends vim
 
 RUN mkdir -p /sources && cd /sources \
     && apt-get -y install --no-install-recommends build-essential cmake git libjson-c-dev libwebsockets-dev \
-    && git clone --depth 1 --branch 1.7.1 https://github.com/tsl0922/ttyd.git \
+    && git clone --depth 1 --branch 1.7.3 https://github.com/tsl0922/ttyd.git \
     && cd ttyd && mkdir build && cd build \
     && cmake .. \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
@@ -76,7 +76,7 @@ RUN mkdir -p /sources && cd /sources \
     && make && make install
 
 RUN curl -L -s -o /usr/bin/ha \
-        "https://github.com/home-assistant/cli/releases/download/4.19.0/ha_${BUILD_ARCH}" \
+        "https://github.com/home-assistant/cli/releases/download/4.27.0/ha_${BUILD_ARCH}" \
     && chmod a+x /usr/bin/ha \
     && ha completion > /usr/share/bash-completion/completions/ha
 
