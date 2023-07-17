@@ -40,7 +40,7 @@ RUN apt-get update \
 		lvm2 \
 		patch \
 		exfat-fuse \
-		exfat-utils \
+		exfatprogs \
 		openssh-server \
                 gnupg2 \
 		tmux \
