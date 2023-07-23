@@ -1,12 +1,13 @@
 {
   "name": "Abcde",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "slug": "deb-abcde",
   "description": "Grab an entire CD and compress it to Ogg/Vorbis, MP3, FLAC, AAC, Ogg/Speex and/or MPP/MP+(Musepack) format via the debian shell.",
   "url": "https://github.com/pssc/ha-addon-deb/",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "services",
   "stdin": true,
+  "init" : false,
   "apparmor": false,
   "audio": true,
   "ports": {

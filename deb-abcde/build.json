@@ -1,9 +1,9 @@
 {
     "build_from": {
-        "aarch64": "ghcr.io/pssc/ha-addon-deb-aarch64:11.2.14",
-        "amd64": "ghcr.io/pssc/ha-addon-deb-amd64:11.2.14",
-        "armhf": "ghcr.io/pssc/ha-addon-deb-armhf:11.2.14",
-        "armv7": "ghcr.io/pssc/ha-addon-deb-armv7:11.2.14",
-        "i386": "ghcr.io/pssc/ha-addon-deb-i386:11.2.14"
+        "aarch64": "ghcr.io/pssc/ha-addon-deb-aarch64:12.0.18",
+        "amd64": "ghcr.io/pssc/ha-addon-deb-amd64:12.0.18",
+        "armhf": "ghcr.io/pssc/ha-addon-deb-armhf:12.0.18",
+        "armv7": "ghcr.io/pssc/ha-addon-deb-armv7:12.0.18",
+        "i386": "ghcr.io/pssc/ha-addon-deb-i386:12.0.18"
     }
 }

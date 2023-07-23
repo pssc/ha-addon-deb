@@ -28,7 +28,7 @@ COPY rootfs/ /
 RUN apt-get update \
     && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
-RUN echo deb http://ftp.uni-kl.de/debian-multimedia/ stable main >/etc/apt/sources.list.d/debian-multimedia.list && \
+RUN echo deb http://ftp.uni-kl.de/debian-multimedia/ bookworm main >/etc/apt/sources.list.d/debian-multimedia.list && \
     apt-get update -oAcquire::AllowInsecureRepositories=true \
     && apt-get --allow-unauthenticated -y install --no-install-recommends deb-multimedia-keyring \
     && apt-get update \
