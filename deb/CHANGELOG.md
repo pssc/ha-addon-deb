@@ -1,3 +1,8 @@
+## [12.1.0] 2023-07-17
+
+### Changes
+ - Debian Base upgrade to 7.1.0
+
 ## [12.0.17] 2023-07-17
 
 ### Changes
