@@ -1,4 +1,4 @@
-## [12.1.1] 2023-08-05
+## [12.1.2] 2023-08-05
 
 ### Changes
  - Move more out of base and into Debian User Terminal
