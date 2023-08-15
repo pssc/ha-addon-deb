@@ -1,5 +1,5 @@
 {
-  "name": "Debian Base Termial",
+  "name": "Debian Base Terminal",
   "version": "12.1.2",
   "slug": "deb",
   "description": "Flexable Debian based shell with ttyd and customisation options.",
