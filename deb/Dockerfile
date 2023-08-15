@@ -36,23 +36,17 @@ RUN apt-get update \
 		git \
 		nfs-common \
 		udev \
-		awscli \
 		lvm2 \
 		patch \
 		exfat-fuse \
 		exfatprogs \
-		openssh-server \
+		davfs2 \
                 gnupg2 \
 		tmux \
 		sudo \
                 shellcheck \
 		sshfs \
 		tzdata 
-
-RUN echo deb https://download.docker.com/linux/debian bullseye stable >/etc/apt/sources.list.d/docker.list && \
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
-    apt-get update && (apt-get -y install --no-install-recommends \
-                docker-ce-cli || true)
 
 #RUN curl -sSL https://get.haskellstack.org/ | sh && \
 #RUN apt-get install --no-install-recommends haskell-stack && \
@@ -63,6 +57,7 @@ RUN echo deb https://download.docker.com/linux/debian bullseye stable >/etc/apt/
 #RUN  usermod --password $(openssl passwd -1 wibble) root
 #chpasswd
 #FIXME DEV?
+
 RUN if [[ ! -z "${debug}" ]];then apt-get -y install --no-install-recommends vim less procps strace;fi 
 
 RUN mkdir -p /sources && cd /sources \
@@ -82,12 +77,8 @@ RUN curl -L -s -o /usr/bin/ha \
 
 RUN cd /sources && git clone --depth 1 -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats ; cd /tmp && rm -r /sources/osync
 
-RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log pipx && pipx install homeassistant-cli==0.9.6
-
-RUN apt-get install -y --no-install-recommends libjson-rpc-perl && cd /sources && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /sources/squeezy
-
-# oh-my-bash
-RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --prefix=/usr/local --unattended
+RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log pipx && \
+    pipx install homeassistant-cli==0.9.6
 
 # Patch
 COPY patch /sources/
@@ -98,6 +89,9 @@ RUN for i in /sources/*.patch;do patch -d / -p1 -i $i;done || true
 RUN if [ -z "${debug}" -o "${debug}" = "false" ];then apt-get -y remove \
         git \
         wget \
+        curl \
+        rsync \
+        shellcheck \
         && apt-get clean -y \
 	&& apt-get -y autoremove \
         && rm -f -r /sources \
@@ -130,12 +124,12 @@ ARG BUILD_VERSION
 # Labels
 LABEL \
     io.hass.name="deb" \
-    io.hass.description="Debian based shell" \
+    io.hass.description="Debian base terminal" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
     maintainer="Phillip Camp <phillip.camp+ha<removeme>@gmail.com>" \
-    org.label-schema.description="Debian based shell" \
+    org.label-schema.description="Debian base terminal for HA" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="deb" \
     org.label-schema.schema-version="1.0" \

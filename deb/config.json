@@ -1,6 +1,6 @@
 {
-  "name": "Debian Shell",
-  "version": "12.1.0",
+  "name": "Debian Base Termial",
+  "version": "12.1.2",
   "slug": "deb",
   "description": "Flexable Debian based shell with ttyd and customisation options.",
   "url": "https://github.com/pssc/ha-addon-deb/",
@@ -38,7 +38,7 @@
   "ingress": true,
   "ingress_port": 0,
   "panel_icon": "mdi:debian",
-  "panel_title": "deb",
+  "panel_title": "Base Terminal",
   "stage": "experimental",
   "options": {
           "links": [],

@@ -1,4 +1,13 @@
-## [12.1.0] 2023-07-17
+## [12.1.1] 2023-08-05
+
+### Changes
+ - Move more out of base and into Debian User Terminal
+ - Add davfs2 for nextcloud support.
+
+### Fixes
+ - docker repo to bookrworm.
+
+## [12.1.0] 2023-08-04
 
 ### Changes
  - Debian Base upgrade to 7.1.0
