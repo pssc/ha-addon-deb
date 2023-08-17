@@ -46,7 +46,7 @@ function service_loop() {
       service) ha-event "service" "${PAYLOAD}" ;;
       shutdown) 
         ha-event "shutdown" "{ }"
-        s6-svscanctl -t /var/run/s6/services
+        /run/s6/basedir/bin/halt
         exit 0 
       ;;
       dump)
