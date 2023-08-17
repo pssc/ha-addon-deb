@@ -24,6 +24,7 @@ ENV HA_USER "squeezeboxserver"
 ENV UDEV false
 
 RUN mv init s6init
+
 COPY rootfs/ /
 
 
