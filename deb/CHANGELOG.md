@@ -2,6 +2,7 @@
 
 ### Fixes
  - Stdin service
+ - s6 halt
 
 ## [12.1.2] 2023-08-05
 

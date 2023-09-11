@@ -42,11 +42,10 @@ RUN apt-get update \
 		exfat-fuse \
 		exfatprogs \
 		davfs2 \
+		sshfs \
                 gnupg2 \
 		tmux \
 		sudo \
-                shellcheck \
-		sshfs \
 		tzdata 
 
 #RUN curl -sSL https://get.haskellstack.org/ | sh && \
