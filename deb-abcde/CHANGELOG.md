@@ -3,6 +3,7 @@
 ### Changes
  - stdin service from upstream only.
  - addon config to yaml
+ - Start abcde with addon config automatically
 
 ### Added
  - sshfs support
@@ -11,6 +12,7 @@
  - patch for printing extra tags at release match selection.
 
 ### Fixes
+ - remove replicated items from deb container build
 
 ## [0.0.8] 2023-08-04
 
