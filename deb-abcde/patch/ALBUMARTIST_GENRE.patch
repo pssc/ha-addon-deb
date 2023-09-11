@@ -1,16 +1,8 @@
---- /usr/bin/abcde.orig	2019-02-05 09:57:06.000000000 +0000
-+++ /usr/bin/abcde	2023-08-28 15:11:39.405875458 +0100
-@@ -913,6 +913,7 @@
- 					esac
- 					run_command "tagtrack-$OUTPUT-$1" nice $ENCNICE $TAGGER $TAGGEROPTS \
- 						-A "$DALBUM" \
-+						-b "$DARTIST" \
- 						-a "$TRACKARTIST" -t "$TRACKNAME" \
- 						-G "$GENREID" -n "${TRACKNUM:-$1}" \
- 						${TRACKNUM:+-N "$TRACKS"} \
---- /usr/bin/abcde.orig	2023-09-03 18:05:49.000000000 +0100
-+++ /usr/bin/abcde	2023-09-03 21:53:37.057746923 +0100
-@@ -913,8 +913,9 @@
+diff --git a/usr/bin/abcde.orig b/usr/bin/abcde
+index 61112fc..1a2d275 100755
+--- a/usr/bin/abcde.orig
++++ b/usr/bin/abcde
+@@ -913,8 +913,9 @@ do_tag ()
  					esac
  					run_command "tagtrack-$OUTPUT-$1" nice $ENCNICE $TAGGER $TAGGEROPTS \
  						-A "$DALBUM" \
@@ -21,7 +13,7 @@
  						${TRACKNUM:+-N "$TRACKS"} \
  						"${addopts[@]}" \
  						"${ABCDETEMPDIR}/track$1.$OUTPUT"
-@@ -5176,14 +5177,9 @@
+@@ -5176,14 +5177,9 @@ if [ "$DOCDDB" = "y" ]; then
  
  				for X in $(f_seq_row 1 $NUM_CDDB_MATCHES)
  				do
