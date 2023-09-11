@@ -4,6 +4,7 @@
  - stdin service from upstream only.
  - addon config to yaml
  - Start abcde with addon config automatically
+ - Copy default config and sample config to `/config/addons_config/abcde/`
 
 ### Added
  - sshfs support

@@ -23,7 +23,8 @@ options+=(-i hassio)
 ingress_port=$(bashio::addon.ingress_port)
 options+=(-p "${ingress_port}")
 
-ttyd_command=(tmux -u new-session -A -s abcde "exec abcde -c /config/addons_config/abcde/abcde.conf ; read")
+# This runs in the default shell for the user..
+ttyd_command=(tmux -u new-session -A -s abcde "abcde -c /config/addons_config/abcde/abcde.conf ; read")
 
 # Change working directory
 cd /root || bashio::exit.nok 'Unable to change working directory'

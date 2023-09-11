@@ -46,7 +46,7 @@ RUN if [ "${debug}" = "true" ];then \
     && cp /usr/bin/abcde-musicbrainz-tool /usr/bin/abcde-musicbrainz-tool.orig \
     && cp /usr/share/perl5/WebService/MusicBrainz.pm /usr/share/perl5/WebService/MusicBrainz.pm.orig \
     ; fi
-COPY patch /sources/
+COPY sources /sources/
 RUN for i in /sources/*.patch;do patch -d / -p1 -i $i;done || true
 
 #Cleanup
