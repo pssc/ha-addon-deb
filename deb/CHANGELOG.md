@@ -1,3 +1,9 @@
+## [12.2.0] 2023-11-08
+
+### Changes
+ - Bump to debian base 7.2 and debian 12.2
+ - expose original /run from HA as /run-orig
+
 ## [12.1.3] 2023-08-16
 
 ### Fixes
