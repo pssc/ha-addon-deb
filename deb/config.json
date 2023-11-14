@@ -23,7 +23,9 @@
       "share:rw",
       "backup:rw",
       "media:rw",
-      "addons:rw"
+      "addons:rw",
+      "all_addon_configs:rw",
+      "homeassistant_config:rw"
   ],
   "tmpfs": true,
   "docker_api": true,
