@@ -2,6 +2,7 @@
 echo init pid "$$" args "$@"
 #clone std in
 exec 10<&0
+touch /run/move
 mkdir /run-orig
 mount -b /run /run-orig
 mount -t tmpfs -o rw,nosuid,nodev,mode=755 tmpfs /run
