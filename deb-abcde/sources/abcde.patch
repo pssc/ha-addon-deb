@@ -1,8 +1,6 @@
-diff --git a/usr/bin/abcde.orig b/usr/bin/abcde
-index 61112fc..1a2d275 100755
---- a/usr/bin/abcde.orig
-+++ b/usr/bin/abcde
-@@ -913,8 +913,9 @@ do_tag ()
+--- /usr/bin/abcde.orig	2024-01-02 14:35:16.000000000 +0000
++++ /usr/bin/abcde	2024-01-02 16:12:35.727437181 +0000
+@@ -913,8 +913,9 @@
  					esac
  					run_command "tagtrack-$OUTPUT-$1" nice $ENCNICE $TAGGER $TAGGEROPTS \
  						-A "$DALBUM" \
@@ -13,7 +11,23 @@ index 61112fc..1a2d275 100755
  						${TRACKNUM:+-N "$TRACKS"} \
  						"${addopts[@]}" \
  						"${ABCDETEMPDIR}/track$1.$OUTPUT"
-@@ -5176,14 +5177,9 @@ if [ "$DOCDDB" = "y" ]; then
+@@ -990,6 +991,7 @@
+ 		flac)
+ 			(
+ 			echo ARTIST="$TRACKARTIST"
++			echo ALBUMARTIST="$DARTIST"
+ 			echo ALBUM="$DALBUM"
+ 			echo TITLE="$TRACKNAME"
+ 			if [ -n "$CDYEAR" ]; then
+@@ -2376,6 +2378,7 @@
+ 			# FIXME parse $track into PERFORMER and TITLE - abcde already has code for this?
+ 			n=1
+ 			echo "PERFORMER \"$DARTIST\"" >> "$CUEFILE_OUT"
++			echo "ALBUMARTIST \"$DARTIST\"" >> "$CUEFILE_OUT"
+ 			echo "TITLE \"$DALBUM\"" >> "$CUEFILE_OUT"
+ 			# Set IFS to <newline> to prevent read from swallowing spaces and tabs
+ 			OIFS="$IFS"
+@@ -5176,14 +5179,9 @@
  
  				for X in $(f_seq_row 1 $NUM_CDDB_MATCHES)
  				do
