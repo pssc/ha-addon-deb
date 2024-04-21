@@ -1,6 +1,6 @@
 {
   "name": "Debian User Terminal",
-  "version": "0.0.8",
+  "version": "12.5.0.0",
   "slug": "deb-user",
   "description": "User Termnal for the debian shell.",
   "url": "https://github.com/pssc/ha-addon-deb/",
