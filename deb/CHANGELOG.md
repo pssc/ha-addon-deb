@@ -1,3 +1,12 @@
+## [12.5.1] 2024-04-20
+
+### Changes
+ - Bump to debian 12.5
+
+### Fixes
+ - mouse issue under chrome
+ - xclip usage with no x available.
+
 ## [12.2.0] 2023-11-08
 
 ### Changes
