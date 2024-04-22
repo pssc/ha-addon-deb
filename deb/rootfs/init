@@ -5,6 +5,9 @@ exec 10<&0
 touch /run/move
 mkdir /run-orig
 mount -b /run /run-orig
+df -h /run
+ls -lR /run/ /run-orig/
+sleep 60
 mount -t tmpfs -o rw,nosuid,nodev,mode=755 tmpfs /run
 mount -o remount,exec /config
 #umount /proc/asound
