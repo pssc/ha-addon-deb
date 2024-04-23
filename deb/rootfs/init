@@ -3,7 +3,7 @@ echo init pid "$$" args "$@"
 #clone std in
 exec 10<&0
 mkdir /haos
-mount --bind /run /haos
+mount --move /run /haos
 mount -t tmpfs -o rw,nosuid,nodev,mode=755 tmpfs /run
 mount -o remount,exec /config
 #umount /proc/asound
