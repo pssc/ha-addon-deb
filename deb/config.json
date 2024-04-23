@@ -1,6 +1,6 @@
 {
   "name": "Debian Base Terminal",
-  "version": "12.5.5",
+  "version": "12.5.6",
   "slug": "deb",
   "description": "Flexable Debian based shell with ttyd and customisation options.",
   "url": "https://github.com/pssc/ha-addon-deb/",
