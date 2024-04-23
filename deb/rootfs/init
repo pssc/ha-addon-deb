@@ -1,11 +1,29 @@
 #!/bin/bash
 echo init pid "$$" args "$@"
-#clone std in
+# clone std in and save to run services on fd 10
 exec 10<&0
+# replicate /run
 mkdir /haos
 mount --rbind /run /haos
+# replace /run with tmpfs system
 mount -t tmpfs -o rw,nosuid,nodev,mode=755 tmpfs /run
+# move provided dirs/sockets back
+BINDS="audio docker.sock log udev dbus"
+for i in ${BINDS};do
+        echo $i
+        if [ -e "/haos/${i}" ];then
+                if [ -d "/haos/${i}" ];then
+                        mkdir "/run/${i}"
+                else
+                        touch /run/${i}
+                fi
+                mount --move "/haos/${i}" "/run/${i}"
+        fi
+done
+# allow us to run scripts out of /config
 mount -o remount,exec /config
+#as we use pulse... consider...
 #umount /proc/asound
+# run s6 init must be with pid 0
 echo s6init next
 exec /s6init "$@"

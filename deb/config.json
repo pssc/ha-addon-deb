@@ -1,6 +1,6 @@
 {
   "name": "Debian Base Terminal",
-  "version": "12.5.6",
+  "version": "12.5.7",
   "slug": "deb",
   "description": "Flexable Debian based shell with ttyd and customisation options.",
   "url": "https://github.com/pssc/ha-addon-deb/",
@@ -28,6 +28,7 @@
       "homeassistant_config:rw"
   ],
   "tmpfs": true,
+  "host_dbus": true,
   "docker_api": true,
   "hassio_api": true,
   "hassio_role": "manager",
