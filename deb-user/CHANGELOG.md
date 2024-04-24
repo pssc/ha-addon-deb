@@ -1,6 +1,8 @@
+## [12.5.7.0] 2024-04-24
+ - bump Debian Base Terminal to 12.5.7
+
 ## [12.5.1.0] 2024-04-1
  - Debian Base Terminal to 12.5.1
-
 ## [0.0.8] 2022-08-16
 
 ### Changes
