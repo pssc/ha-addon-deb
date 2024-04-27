@@ -1,5 +1,5 @@
-## [12.1.3.9] 2024-04-20
- - Bump debian base terminal to 12.5.1
+## [12.5.7.0] 2024-04-27
+ - Bump debian base terminal to 12.5.7
 
 ## [12.1.3.9] 2023-09-05
 

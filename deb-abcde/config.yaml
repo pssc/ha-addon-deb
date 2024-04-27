@@ -1,5 +1,5 @@
 name: Abcde
-version: 13.1.3.9
+version: 12.5.7.0
 slug: deb-abcde
 description: Grab an entire CD and compress it to Ogg/Vorbis, MP3, FLAC, AAC, Ogg/Speex
   and/or MPP/MP+(Musepack) format via the debian shell.
