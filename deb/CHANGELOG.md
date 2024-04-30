@@ -1,9 +1,54 @@
-## [0.0.10] 2022-01-04
+## [12.5.1] 2024-04-20
 
+### Changes
+ - Bump to debian 12.5
+
+### Fixes
+ - mouse issue under chrome
+ - xclip usage with no x available.
+
+## [12.2.0] 2023-11-08
+
+### Changes
+ - Bump to debian base 7.2 and debian 12.2
+ - expose original /run from HA as /run-orig
+
+## [12.1.3] 2023-08-16
+
+### Fixes
+ - Stdin service
+ - s6 halt
+
+## [12.1.2] 2023-08-05
+
+### Changes
+ - Move more out of base and into Debian User Terminal
+ - Add davfs2 for nextcloud support.
+
+### Fixes
+ - docker repo to bookrworm.
+
+## [12.1.0] 2023-08-04
+
+### Changes
+ - Debian Base upgrade to 7.1.0
+
+## [12.0.17] 2023-07-17
+
+### Changes
+ - Debian Base upgrade to 7.0.0
+ - ttyd 1.7.3
+ - ha cli 4.27.0
+
+## [11.12.17] 2022-08-20
 
 ### Changes
  - Debian Base upgrade to 5.3.1
+ - ttyd 1.7.2
+ - ha cli 4.19.0
 
 ### Added
-### Fixes
+ - oh my bash
 
+### Fixes
+ - Fix hass-cli to 0.9.3 as 0.9.4 borks

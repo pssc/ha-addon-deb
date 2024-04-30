@@ -1,14 +1,14 @@
 {
-  "name": "Debian Base Terminal",
-  "version": "12.5.7",
-  "slug": "deb",
-  "description": "Flexable Debian based shell with ttyd and customisation options.",
+  "name": "Debian User Terminal",
+  "version": "12.5.7.1",
+  "slug": "deb-user",
+  "description": "User Termnal for the debian shell.",
   "url": "https://github.com/pssc/ha-addon-deb/",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "init": false,
   "startup": "services",
   "stdin": true,
   "apparmor": false,
-  "init": false,
   "audio": true,
   "ports": {
       "22/tcp": null
@@ -18,21 +18,19 @@
   },
   "timeout": 180,
   "map": [
+      "config:rw",
       "ssl",
       "share:rw",
       "backup:rw",
       "media:rw",
-      "addons:rw",
-      "addon_config:rw",
-      "all_addon_configs:rw",
-      "homeassistant_config:rw"
+      "addons:rw"
   ],
   "tmpfs": true,
-  "host_dbus": true,
   "docker_api": true,
   "hassio_api": true,
   "hassio_role": "manager",
   "udev":true,
+  "host_dbus": true,
   "full_access": true,
   "homeassistant_api": true,
   "privileged": [ "NET_ADMIN", "SYS_ADMIN", "SYS_RAWIO", "SYS_TIME", "SYS_NICE", "SYS_RESOURCE", "SYS_PTRACE", "SYS_MODULE" , "DAC_READ_SEARCH" ],
@@ -41,7 +39,7 @@
   "ingress": true,
   "ingress_port": 0,
   "panel_icon": "mdi:debian",
-  "panel_title": "Base Terminal",
+  "panel_title": "User Terminal",
   "stage": "experimental",
   "options": {
           "links": [],
@@ -68,6 +66,5 @@
     "dirs": ["str?"],
     "init_commands": ["str?"],
     "packages": ["str?"]
-  },
-  "image": "ghcr.io/pssc/ha-addon-deb-{arch}"
+  }
 }

@@ -1,0 +1,61 @@
+--- /usr/bin/abcde-musicbrainz-tool.orig	2023-09-02 22:14:13.346866762 +0100
++++ /usr/bin/abcde-musicbrainz-tool	2023-09-03 00:21:26.935225769 +0100
+@@ -87,7 +87,7 @@
+     my $ws = WebService::MusicBrainz->new();
+     my $response = $ws->search(discid => {
+ 	discid => $discid,
+-	inc => ['artists', 'artist-credits', 'recordings']
++	inc => ['artists', 'artist-credits', 'recordings','genres']
+         });
+ 
+     if ($response->{'error'}) {
+@@ -102,6 +102,7 @@
+ 	my @releases = @{ $response->{'releases'} };
+ 	foreach my $release (@releases) {
+ 	    my $a_artist = "";
++	    my @artist_genres;
+ 	    my $number_artists = @{ $release->{'artist-credit'}};
+ 	    if ($number_artists > 0) {
+ 		for (my $i = 0; $i < $number_artists; $i++) {
+@@ -109,6 +110,7 @@
+ 			$a_artist = $a_artist . @{ $release->{'artist-credit'} }[$i-1]->{'joinphrase'};
+ 		    }
+ 		    $a_artist = $a_artist . @{ $release->{'artist-credit'} }[$i]->{'name'};
++	            @artist_genres = (@artist_genres,@{@{ $release->{'artist-credit'} }[$i]->{'artist'}->{'genres'}} );
+ 		}
+ 	    }
+ 	    my $va = 0;
+@@ -159,6 +161,23 @@
+ 		$total_len += $track->{'length'};
+ 	    }
+ 
++	    my $genre = "";
++	    my $genres_list = "";
++	    my @genres = @{ $release->{'genres'} };
++	    if (scalar(@genres) < 1) {
++	       @genres = @artist_genres;
++               $genres_list = 'from artists ';
++            }
++            for (my $i = 0; $i < scalar(@genres); $i++) {
++                $genre = $genres[$i]->{'name'};
++		if ($i > 0) {
++                    $genres_list .= ',' . $genre;
++	        } else {
++                    $genres_list .= $genre;
++		}
++            }
++	    chomp $genres_list;
++
+ 	    print OUT "#\n";
+ 	    printf OUT "# Disc length: %d seconds\n", $total_len / 1000.0;
+ 	    print OUT "#\n";
+@@ -169,7 +188,8 @@
+ 	    print OUT "DISCID=" . $discid . "\n";
+ 	    print OUT "DTITLE=" . $a_artist. " / " . $release->{'title'} . "\n";
+ 	    print OUT "DYEAR=" . $rel_year . "\n";
+-	    print OUT "DGENRE=\n";        
++	    print OUT "DGENRE=". $genre  . "\n";
++	    print OUT "#GENRES available ". $genres_list . "\n";
+ 
+ 	    for (my $i = 0; $i < scalar(@tracks); $i++) {
+ 		my $track = $tracks[$i];

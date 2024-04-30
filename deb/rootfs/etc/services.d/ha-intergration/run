@@ -46,7 +46,7 @@ function service_loop() {
       service) ha-event "service" "${PAYLOAD}" ;;
       shutdown) 
         ha-event "shutdown" "{ }"
-        s6-svscanctl -t /var/run/s6/services
+        /run/s6/basedir/bin/halt
         exit 0 
       ;;
       dump)
@@ -77,7 +77,7 @@ function service_loop() {
       ;;
       *) bashio::log.error "Command not found: ${cmd}" ;;
     esac
-  done < /proc/1/fd/0
+  done < /proc/1/fd/10
   bashio::log.info 'Finished the Home Assistant STDIN service...'
   exit 1
 }

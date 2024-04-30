@@ -24,6 +24,7 @@ ENV HA_USER "squeezeboxserver"
 ENV UDEV false
 
 RUN mv init s6init
+
 COPY rootfs/ /
 
 
@@ -36,23 +37,16 @@ RUN apt-get update \
 		git \
 		nfs-common \
 		udev \
-		awscli \
 		lvm2 \
 		patch \
 		exfat-fuse \
-		exfat-utils \
-		openssh-server \
+		exfatprogs \
+		davfs2 \
+		sshfs \
                 gnupg2 \
 		tmux \
 		sudo \
-                shellcheck \
-		sshfs \
 		tzdata 
-
-RUN echo deb https://download.docker.com/linux/debian bullseye stable >/etc/apt/sources.list.d/docker.list && \
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
-    apt-get update && (apt-get -y install --no-install-recommends \
-                docker-ce-cli || true)
 
 #RUN curl -sSL https://get.haskellstack.org/ | sh && \
 #RUN apt-get install --no-install-recommends haskell-stack && \
@@ -63,11 +57,12 @@ RUN echo deb https://download.docker.com/linux/debian bullseye stable >/etc/apt/
 #RUN  usermod --password $(openssl passwd -1 wibble) root
 #chpasswd
 #FIXME DEV?
+
 RUN if [[ ! -z "${debug}" ]];then apt-get -y install --no-install-recommends vim less procps strace;fi 
 
 RUN mkdir -p /sources && cd /sources \
     && apt-get -y install --no-install-recommends build-essential cmake git libjson-c-dev libwebsockets-dev \
-    && git clone --depth 1 --branch 1.6.3 https://github.com/tsl0922/ttyd.git \
+    && git clone --depth 1 --branch 1.7.3 https://github.com/tsl0922/ttyd.git \
     && cd ttyd && mkdir build && cd build \
     && cmake .. \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
@@ -76,24 +71,27 @@ RUN mkdir -p /sources && cd /sources \
     && make && make install
 
 RUN curl -L -s -o /usr/bin/ha \
-        "https://github.com/home-assistant/cli/releases/download/4.17.0/ha_${BUILD_ARCH}" \
+        "https://github.com/home-assistant/cli/releases/download/4.27.0/ha_${BUILD_ARCH}" \
     && chmod a+x /usr/bin/ha \
     && ha completion > /usr/share/bash-completion/completions/ha
 
-RUN cd /sources && git clone --depth 1 -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats && cd /tmp && rm -r /sources/osync
+RUN cd /sources && git clone --depth 1 -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats ; cd /tmp && rm -r /sources/osync
 
-RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log && pip3 install homeassistant-cli
+RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log pipx && \
+    pipx install homeassistant-cli==0.9.6
 
-RUN apt-get install -y --no-install-recommends libjson-rpc-perl && cd /sources && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /sources/squeezy
-
+# Patch
 COPY patch /sources/
 
 RUN for i in /sources/*.patch;do patch -d / -p1 -i $i;done || true
 
-#Cleanup
+# Cleanup
 RUN if [ -z "${debug}" -o "${debug}" = "false" ];then apt-get -y remove \
         git \
         wget \
+        curl \
+        rsync \
+        shellcheck \
         && apt-get clean -y \
 	&& apt-get -y autoremove \
         && rm -f -r /sources \
@@ -126,12 +124,12 @@ ARG BUILD_VERSION
 # Labels
 LABEL \
     io.hass.name="deb" \
-    io.hass.description="Debian based shell" \
+    io.hass.description="Debian base terminal" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
     maintainer="Phillip Camp <phillip.camp+ha<removeme>@gmail.com>" \
-    org.label-schema.description="Debian based shell" \
+    org.label-schema.description="Debian base terminal for HA" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="deb" \
     org.label-schema.schema-version="1.0" \

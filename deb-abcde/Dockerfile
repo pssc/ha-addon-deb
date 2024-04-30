@@ -28,7 +28,7 @@ COPY rootfs/ /
 RUN apt-get update \
     && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
-RUN echo deb http://ftp.uni-kl.de/debian-multimedia/ stable main >/etc/apt/sources.list.d/debian-multimedia.list && \
+RUN echo deb http://ftp.uni-kl.de/debian-multimedia/ bookworm main >/etc/apt/sources.list.d/debian-multimedia.list && \
     apt-get update -oAcquire::AllowInsecureRepositories=true \
     && apt-get --allow-unauthenticated -y install --no-install-recommends deb-multimedia-keyring \
     && apt-get update \
@@ -38,10 +38,15 @@ RUN echo deb http://ftp.uni-kl.de/debian-multimedia/ stable main >/etc/apt/sourc
         lame \
         eyed3 \
         aacgain \
+        rsync \
         glyrc
 
-COPY patch /sources/
-
+RUN if [ "${debug}" = "true" ];then \
+    cp /usr/bin/abcde /usr/bin/abcde.orig \
+    && cp /usr/bin/abcde-musicbrainz-tool /usr/bin/abcde-musicbrainz-tool.orig \
+    && cp /usr/share/perl5/WebService/MusicBrainz.pm /usr/share/perl5/WebService/MusicBrainz.pm.orig \
+    ; fi
+COPY sources /sources/
 RUN for i in /sources/*.patch;do patch -d / -p1 -i $i;done || true
 
 #Cleanup
@@ -70,7 +75,7 @@ ARG BUILD_VERSION
 # Labels
 LABEL \
     io.hass.name="deb-abcde" \
-    io.hass.description="Debian based shell for abcde" \
+    io.hass.description="Debian based terminal for abcde" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \

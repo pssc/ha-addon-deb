@@ -1,0 +1,46 @@
+--- /usr/bin/abcde.orig	2024-01-02 14:35:16.000000000 +0000
++++ /usr/bin/abcde	2024-01-02 16:12:35.727437181 +0000
+@@ -913,8 +913,9 @@
+ 					esac
+ 					run_command "tagtrack-$OUTPUT-$1" nice $ENCNICE $TAGGER $TAGGEROPTS \
+ 						-A "$DALBUM" \
++						-b "$DARTIST" \
+ 						-a "$TRACKARTIST" -t "$TRACKNAME" \
+-						-G "$GENREID" -n "${TRACKNUM:-$1}" \
++						-G "$CDGENRE" -n "${TRACKNUM:-$1}" \
+ 						${TRACKNUM:+-N "$TRACKS"} \
+ 						"${addopts[@]}" \
+ 						"${ABCDETEMPDIR}/track$1.$OUTPUT"
+@@ -990,6 +991,7 @@
+ 		flac)
+ 			(
+ 			echo ARTIST="$TRACKARTIST"
++			echo ALBUMARTIST="$DARTIST"
+ 			echo ALBUM="$DALBUM"
+ 			echo TITLE="$TRACKNAME"
+ 			if [ -n "$CDYEAR" ]; then
+@@ -2376,6 +2378,7 @@
+ 			# FIXME parse $track into PERFORMER and TITLE - abcde already has code for this?
+ 			n=1
+ 			echo "PERFORMER \"$DARTIST\"" >> "$CUEFILE_OUT"
++			echo "ALBUMARTIST \"$DARTIST\"" >> "$CUEFILE_OUT"
+ 			echo "TITLE \"$DALBUM\"" >> "$CUEFILE_OUT"
+ 			# Set IFS to <newline> to prevent read from swallowing spaces and tabs
+ 			OIFS="$IFS"
+@@ -5176,14 +5179,9 @@
+ 
+ 				for X in $(f_seq_row 1 $NUM_CDDB_MATCHES)
+ 				do
+-					ATITLE=$(grep -a -e '^DTITLE=' "${ABCDETEMPDIR}/cddbread.$X" | cut -c8- | tr -d \\r\\n)
+ 					SOURCE=$(cat "${ABCDETEMPDIR}/datasource.$X")
+-					echo "#$X ($SOURCE): ---- ${ATITLE} ----" >> "${ABCDETEMPDIR}/cddbchoices"
+-                    for TRACK in $(f_seq_row 1 $TRACKS)
+-					do
+-                        echo "$TRACK:" "$(grep -a ^TTITLE$(($TRACK - 1))= "${ABCDETEMPDIR}/cddbread.$X" | cut -f2- -d= | tr -d \\r\\n)" >> "${ABCDETEMPDIR}/cddbchoices"
+-					done
+-                    echo >> "${ABCDETEMPDIR}/cddbchoices"
++					echo -n "#$X ($SOURCE): " >> "${ABCDETEMPDIR}/cddbchoices"
++					do_cddbparse "${ABCDETEMPDIR}/cddbread.$X" >> "${ABCDETEMPDIR}/cddbchoices"
+ 				done
+ 			fi
+ 		fi
