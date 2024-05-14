@@ -45,6 +45,7 @@ RUN apt-get update \
                 yq \
                 file \
                 android-file-transfer \
+                mosquitto-clients \
                 rsync 
 
 RUN echo deb https://download.docker.com/linux/debian bookworm stable >/etc/apt/sources.list.d/docker.list && \
