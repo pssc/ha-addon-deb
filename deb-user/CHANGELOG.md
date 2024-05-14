@@ -1,6 +1,6 @@
-## [12.5.9.0] 2024-05-15
+## [12.5.9.0] 2024-05-14
  - bump Debian Base Terminal to 12.5.9
- - add otbr, mqtt and matter services
+ - add msql and mqtt servcies
 
 ## [12.5.7.0] 2024-04-24
  - bump Debian Base Terminal to 12.5.7
@@ -19,3 +19,4 @@
 
 ### Added
  - yq
+
