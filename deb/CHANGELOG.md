@@ -1,3 +1,8 @@
+## [12.5.10] 2024-05-15
+
+### Fixes
+ - Fix mqtt startup to cope with involatile homedirs
+
 ## [12.5.9] 2024-05-01
 
 ### Changes
