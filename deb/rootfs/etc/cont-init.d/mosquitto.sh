@@ -22,6 +22,6 @@ if bashio::services.available "mqtt"; then
     echo "--username ${username}"
   } > /root/.config/mosquitto_sub
 
-  ln -s /root/.config/mosquitto_sub /root/.config/mosquitto_pub
-  ln -s /root/.config/mosquitto_sub /root/.config/mosquitto_rr
+  ln -fs /root/.config/mosquitto_sub /root/.config/mosquitto_pub
+  ln -fs /root/.config/mosquitto_sub /root/.config/mosquitto_rr
 fi
