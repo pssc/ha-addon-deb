@@ -14,12 +14,12 @@ if bashio::services.available "mysql"; then
   port=$(bashio::services "mysql" "port")
   username=$(bashio::services "mysql" "username")
 
-  mkdir -p /root/.config
+  mkdir -p /etc/mysql/conf.d
   {
     echo "[client]"
     echo "host=${host}"
     echo "password=\"${password}\""
     echo "port=${port}"
     echo "user=\"${username}\""
-  } > /etc/my.cnf.d/service.cnf
+  } > /etc/mysql/conf.d/service.cnf
 fi

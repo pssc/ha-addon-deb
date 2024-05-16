@@ -1,3 +1,8 @@
+## [12.5.11] 2024-05-16
+
+### Fixes
+ - Fix mysql startup to cope with debian
+
 ## [12.5.10] 2024-05-15
 
 ### Fixes
