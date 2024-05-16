@@ -1,6 +1,9 @@
+## [12.5.9.1] 2024-05-16
+ - bump Debian Base Terminal to 12.5.10 fix for mqtt service
+
 ## [12.5.9.0] 2024-05-14
  - bump Debian Base Terminal to 12.5.9
- - add msql and mqtt servcies
+ - add mysql and mqtt servcies
 
 ## [12.5.7.0] 2024-04-24
  - bump Debian Base Terminal to 12.5.7
