@@ -1,4 +1,11 @@
-## [12.5.9.1] 2024-05-16
+## [12.5.12.0] 2024-05-19
+ - bump Debian Base Terminal to 12.5.12 fix for apt package cache
+
+## [12.5.11.0] 2024-05-16
+ - bump Debian Base Terminal to 12.5.11 fix for mysql service
+ - include mariadb client
+
+## [12.5.10.0] 2024-05-16
  - bump Debian Base Terminal to 12.5.10 fix for mqtt service
 
 ## [12.5.9.0] 2024-05-14

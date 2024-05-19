@@ -46,6 +46,7 @@ RUN apt-get update \
                 file \
                 android-file-transfer \
                 mosquitto-clients \
+                mariadb-client \
                 rsync 
 
 RUN echo deb https://download.docker.com/linux/debian bookworm stable >/etc/apt/sources.list.d/docker.list && \
