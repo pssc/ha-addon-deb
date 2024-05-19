@@ -1,3 +1,11 @@
+## [12.5.12] 2024-05-19
+
+### Changes
+ - Allow use of "/config/addons_config/deb/apt" for caching if it exists
+
+### Fixes
+ - Fix match for hostname for naming addon for path pre/post fixes HAA_NAME
+
 ## [12.5.11] 2024-05-16
 
 ### Fixes
