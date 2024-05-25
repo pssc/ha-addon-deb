@@ -1,3 +1,13 @@
+## [12.5.12.0] 2024-04-21
+ - Bump debian base terminal to 12.5.12 for naming fixes
+
+## [12.5.11.0] 2024-04-16
+ - Bump debian base terminal to 12.5.11 for mqtt service fix
+
+## [12.5.7.1] 2024-04-14
+ - Bump debian base terminal to 12.5.9
+ - Add mqtt support
+
 ## [12.5.7.0] 2024-04-27
  - Bump debian base terminal to 12.5.7
 

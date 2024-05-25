@@ -1,4 +1,4 @@
-# Home Assistant Add-on: Debian Shell (Unoffical)
+# Home Assistant Add-on: abcde Debian Shell (Unoffical)
 
 ## Installation
 
@@ -10,15 +10,14 @@ Follow these steps to get the add-on installed on your system:
 
 ## How to use
 
-Navigate to the web UI via ingress or directly on port 9000 and configure.
+Fire up the addon answer the prompt at the terminal
 
 ## Add-on Configuration
 
-The LMS server add-on can be tweaked to your liking. This section
-describes each of the add-on configuration options.
+Smaple and Reference config files supplied.
 
 default locations
- - /config/
+ - /config/addon_config/deb_abcde
 
 Addional software:-
  - osync

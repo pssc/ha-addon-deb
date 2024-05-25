@@ -39,6 +39,7 @@ RUN echo deb http://ftp.uni-kl.de/debian-multimedia/ bookworm main >/etc/apt/sou
         eyed3 \
         aacgain \
         rsync \
+        mosquitto-clients \
         glyrc
 
 RUN if [ "${debug}" = "true" ];then \

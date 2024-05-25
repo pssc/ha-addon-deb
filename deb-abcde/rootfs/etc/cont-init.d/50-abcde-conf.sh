@@ -4,11 +4,11 @@
 # ==============================================================================
 
 set -xe
-CDEST=/config/addons_config/abcde/
+CDEST=/config/addons_config/${HAA_NAME}
 
 mkdir -p ${CDEST}
 
-if [ ! -r /config/addons_config/abcde/abcde.conf ];then
-  cp -v /etc/abcde.conf /config/addons_config/abcde/abcde_sample.conf
-  cp -v /usr/local/etc/abcde.conf /config/addons_config/abcde/abcde.conf
+if [ ! -r ${CDEST}/abcde.conf ];then
+  cp -v /etc/abcde.conf ${CDEST}/abcde_sample.conf
+  cp -v /usr/local/etc/abcde.conf ${CDEST}/abcde.conf
 fi
