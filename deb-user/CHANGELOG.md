@@ -1,3 +1,6 @@
+## [12.5.12.1] 2024-05-27
+ - Switch to prebuilt images to reduce backups
+
 ## [12.5.12.0] 2024-05-19
  - bump Debian Base Terminal to 12.5.12 fix for apt package cache
 
