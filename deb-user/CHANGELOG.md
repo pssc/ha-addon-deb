@@ -1,3 +1,6 @@
+## [12.5.12.2] 2024-08-07
+ - Allow access to addon_configs
+
 ## [12.5.12.1] 2024-05-27
  - Switch to prebuilt images to reduce backups
 
