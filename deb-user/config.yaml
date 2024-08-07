@@ -1,5 +1,5 @@
 name: Debian User Terminal
-version: 12.5.12.1
+version: 12.5.12.2
 slug: deb-user
 description: User Termnal for the debian shell.
 url: https://github.com/pssc/ha-addon-deb/
@@ -21,6 +21,7 @@ ports_description:
 timeout: 180
 map:
   - config:rw
+  - all_addon_configs:rw
   - ssl
   - share:rw
   - backup:rw
