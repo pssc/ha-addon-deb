@@ -47,6 +47,8 @@ RUN apt-get update \
                 android-file-transfer \
                 mosquitto-clients \
                 mariadb-client \
+                pulseaudio-utils \
+                pulsemixer \
                 unzip \
                 rsync 
 
