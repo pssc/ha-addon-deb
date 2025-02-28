@@ -18,6 +18,7 @@ ENV DEBIAN_FRONTEND "noninteractive"
 # TZ config at runtime
 ENV DISABLE_HA_AUTHENTICATION true
 
+# Force build 1
 # LMS 
 # Debug?
 ENV HA_USER "squeezeboxserver"
