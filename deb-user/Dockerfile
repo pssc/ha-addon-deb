@@ -24,6 +24,8 @@ ENV DISABLE_HA_AUTHENTICATION true
 ENV HA_USER "squeezeboxserver"
 ENV UDEV false
 
+ENV TEST_A=fish
+ENV TEST_AB=${TEST_A}+chips
 
 COPY rootfs/ /
 
