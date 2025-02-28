@@ -1,7 +1,7 @@
 name: Debian User Terminal
 version: 12.5.12.4
 slug: deb-user
-description: User Termnal for the debian shell.
+description: User Termnal for the debian shell...
 url: https://github.com/pssc/ha-addon-deb/
 arch:
   - armhf
