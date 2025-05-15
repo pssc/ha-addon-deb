@@ -2,7 +2,7 @@
   "name": "Debian Base Terminal",
   "version": "12.7.8.3",
   "slug": "deb",
-  "description": "Flexable Debian based shell with ttyd and customisation options.",
+  "description": "Flexable Debian based shell with ttyd and customisation options...",
   "url": "https://github.com/pssc/ha-addon-deb/",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "services",
