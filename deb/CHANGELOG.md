@@ -1,4 +1,7 @@
 ## [12.5.12] 2024-05-19
+ - Bump base to 7.8.3
+
+## [12.5.12] 2024-05-19
 
 ### Changes
  - Allow use of "/config/addons_config/deb/apt" for caching if it exists
