@@ -1,6 +1,6 @@
 ## [12.7.8.3.0.0] 2025-05-18
  - bump base terminal 12.7.8.3.0
- - add python3.13 for HA dev work.
+ - add python3.13 for HA dev work. not armv7 or i386
 
 ## [12.5.12.4] 2025-02-28
  - add pulse cli tools
