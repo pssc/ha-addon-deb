@@ -10,19 +10,19 @@ ARG BUILD_ARCH
 #FIX From Arg.
 # env
 # Allow longer shutdown
-ENV S6_SERVICES_GRACETIME 119000
+ENV S6_SERVICES_GRACETIME=119000
 # Set for package install
-ENV DEBIAN_FRONTEND "noninteractive" 
+ENV DEBIAN_FRONTEND="noninteractive" 
 # FIXME? locales
 #ENV LANG C.UTF-8
 # TZ config at runtime
-ENV DISABLE_HA_AUTHENTICATION true
+ENV DISABLE_HA_AUTHENTICATION=true
 
 # Force build 2
 # LMS 
 # Debug?
-ENV HA_USER "squeezeboxserver"
-ENV UDEV false
+ENV HA_USER="hauser"
+ENV UDEV=false
 
 ENV TEST_A=fish
 ENV TEST_AB=${TEST_A}+chips
