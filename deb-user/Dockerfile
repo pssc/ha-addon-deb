@@ -70,7 +70,7 @@ RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/
 
 # python for HA Dev
 ENV PV=3.13
-RUN if [ "${BUILD_ARCH}" != "i386" -o "${BUILD_ARCH}" != "armv7" ];then apt-get install -y python${PV} python${PV}-venv python${PV}-dev; fi
+RUN if [ "${BUILD_ARCH}" != "i386" -a "${BUILD_ARCH}" != "armv7" ];then apt-get install -y python${PV} python${PV}-venv python${PV}-dev; fi
 #RUN wget -qO- https://pascalroeleven.nl/deb-pascalroeleven.gpg > /etc/apt/keyrings/deb-pascalroeleven.gpg && \
 #cat <<EOF | sudo tee /etc/apt/sources.list.d/pascalroeleven.sources
 #Types: deb
