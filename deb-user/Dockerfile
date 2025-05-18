@@ -62,11 +62,23 @@ RUN echo deb https://download.docker.com/linux/debian bookworm stable >/etc/apt/
 
 RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log pipx && \
     pipx install homeassistant-cli==0.9.6
-                                                                                                                                                                                                                                                                            
-RUN apt-get install -y --no-install-recommends libjson-rpc-perl && cd /sources && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /sources/squeezy                                          
-                                                                                                                                                                                                                                                                            
-# oh-my-bash                                                                                                                                                                                                                                                                
+
+RUN apt-get install -y --no-install-recommends libjson-rpc-perl && cd /sources && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /sources/squeezy
+
+# oh-my-bash
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --prefix=/usr/local --unattended                  
+
+# python for HA Dev
+ENV PV=3.13
+RUN apt-get install -y python${PV} python${PV}-venv python${PV}-dev
+#RUN wget -qO- https://pascalroeleven.nl/deb-pascalroeleven.gpg > /etc/apt/keyrings/deb-pascalroeleven.gpg && \
+#cat <<EOF | sudo tee /etc/apt/sources.list.d/pascalroeleven.sources
+#Types: deb
+#URIs: http://deb.pascalroeleven.nl/python${PV}
+#Suites: bookworm-backports
+#Components: main
+#Signed-By: /etc/apt/keyrings/deb-pascalroeleven.gpg
+#EOF
 
 
 COPY patch /sources/

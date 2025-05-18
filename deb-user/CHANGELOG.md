@@ -1,3 +1,10 @@
+## [12.7.8.3.0.0] 2025-02-28
+ - bump base terminal 12.7.8.3.0
+
+## [12.5.12.4] 2025-02-28
+ - add pulse cli tools
+ - update map of config paths and enable descrete addon config
+
 ## [12.5.12.3] 2024-09-11
  - add unzip
 
