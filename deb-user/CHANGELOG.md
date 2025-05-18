@@ -1,4 +1,4 @@
-## [12.7.8.3.0.0] 2025-02-28
+## [12.7.8.3.0.0] 2025-05-18
  - bump base terminal 12.7.8.3.0
  - add python3.13 for HA dev work.
 
