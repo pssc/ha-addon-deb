@@ -1,5 +1,6 @@
 ## [12.7.8.3.0.0] 2025-02-28
  - bump base terminal 12.7.8.3.0
+ - add python3.13 for HA dev work.
 
 ## [12.5.12.4] 2025-02-28
  - add pulse cli tools
@@ -33,6 +34,7 @@
 
 ## [12.5.1.0] 2024-04-1
  - Debian Base Terminal to 12.5.1
+
 ## [0.0.8] 2022-08-16
 
 ### Changes
