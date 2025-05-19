@@ -1,3 +1,7 @@
+## [12.7.8.3.0.0] 2025-05-19
+ - Bump debian base terminal to 12.7.8.3
+ - add flac cli tools
+
 ## [12.5.12.0] 2024-04-21
  - Bump debian base terminal to 12.5.12 for naming fixes
 

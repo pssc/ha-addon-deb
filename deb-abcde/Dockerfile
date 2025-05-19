@@ -36,6 +36,7 @@ RUN echo deb http://ftp.uni-kl.de/debian-multimedia/ bookworm main >/etc/apt/sou
     	abcde \
         eject \
         lame \
+        flac \
         eyed3 \
         aacgain \
         rsync \
