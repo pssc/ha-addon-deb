@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:latest
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:9.3.0
 FROM ${BUILD_FROM}
 ARG target_uid=1000
 ARG debug=true
