@@ -25,7 +25,7 @@ ENV HA_USER "shelluser"
 ENV UDEV false
 
 RUN mv init s6init
-RUN echo deb
+RUN echo deb 22
 
 COPY rootfs/ /
 
