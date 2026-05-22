@@ -85,4 +85,4 @@ schema:
     - str?
   packages:
     - str?
-image: ghcr.io/pssc/ha-addon-deb-{arch}
+image: ghcr.io/pssc/ha-addon-deb
