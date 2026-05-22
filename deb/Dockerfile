@@ -1,4 +1,5 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:9.3.0
+# hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 ARG target_uid=1000
 ARG debug=true
@@ -20,7 +21,7 @@ ENV DISABLE_HA_AUTHENTICATION true
 
 # LMS 
 # Debug?
-ENV HA_USER "squeezeboxserver"
+ENV HA_USER "shelluser"
 ENV UDEV false
 
 RUN mv init s6init
