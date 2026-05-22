@@ -48,6 +48,7 @@ jobs:
           else
             for app in ${APPS}; do
               for file in ${MONITORED_FILES}; do
+              echo "${CHANGED_FILES}" =~ ${app}/${file}
                 if [[ "${CHANGED_FILES}" =~ ${app}/${file} ]]; then
                   changed_apps+=("${app}")
                   break
@@ -58,7 +59,9 @@ jobs:
 
           if [[ ${#changed_apps[@]} -gt 0 ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "changed=true"
             echo "changed_apps=$(jq -nc '$ARGS.positional' --args "${changed_apps[@]}")" >> "$GITHUB_OUTPUT"
+            echo "changed_apps=$(jq -nc '$ARGS.positional' --args "${changed_apps[@]}")"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
