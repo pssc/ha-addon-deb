@@ -6,6 +6,13 @@ ARG debug=true
 
 ARG BUILD_ARCH
 
+# renovate: datasource=github-releases depName=tsl0922/ttyd
+ARG TTYD_VERSION=1.7.3
+# renovate: datasource=github-releases depName=home-assistant/cli
+ARG HA_CLI_VERSION=4.27.0
+# renovate: datasource=pypi depName=homeassistant-cli
+ARG HOMEASSISTANT_CLI_VERSION=0.9.6
+
 # ARGS...
 
 #FIX From Arg.
@@ -64,7 +71,7 @@ RUN if [[ ! -z "${debug}" ]];then apt-get -y install --no-install-recommends vim
 
 RUN mkdir -p /sources && cd /sources \
     && apt-get -y install --no-install-recommends build-essential cmake git libjson-c-dev libwebsockets-dev \
-    && git clone --depth 1 --branch 1.7.3 https://github.com/tsl0922/ttyd.git \
+    && git clone --depth 1 --branch "${TTYD_VERSION}" https://github.com/tsl0922/ttyd.git \
     && cd ttyd && mkdir build && cd build \
     && cmake .. \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
@@ -73,14 +80,14 @@ RUN mkdir -p /sources && cd /sources \
     && make && make install
 
 RUN curl -L -s -o /usr/bin/ha \
-        "https://github.com/home-assistant/cli/releases/download/4.27.0/ha_${BUILD_ARCH}" \
+        "https://github.com/home-assistant/cli/releases/download/${HA_CLI_VERSION}/ha_${BUILD_ARCH}" \
     && chmod a+x /usr/bin/ha \
     && ha completion > /usr/share/bash-completion/completions/ha
 
 RUN cd /sources && git clone --depth 1 -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats ; cd /tmp && rm -r /sources/osync
 
 RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log pipx && \
-    pipx install homeassistant-cli==0.9.6
+    pipx install "homeassistant-cli==${HOMEASSISTANT_CLI_VERSION}"
 
 # Patch
 COPY patch /sources/

@@ -1,6 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "enabledManagers": ["dockerfile"],
-  "includePaths": ["deb/Dockerfile"]
+  "extends": [
+    "config:recommended",
+    "docker:pinDigests",
+    "customManagers:dockerfileVersions"
+  ],
+  "enabledManagers": ["dockerfile", "custom.regex"],
+  "includePaths": [
+    "deb/**",
+    "deb-user/**",
+    "deb-abcde/**"
+  ]
 }
