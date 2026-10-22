@@ -1,3 +1,7 @@
+## [9.5.1.0.0] 2026-10-22
+ - update Debian Base Terminal image to 9.5.1.0
+ - remove obsolete armhf, armv7, and i386 architectures and build.json
+
 ## [12.7.8.3.0.0] 2025-05-18
  - bump base terminal 12.7.8.3.0
  - add python3.13 for HA dev work. not armv7 or i386

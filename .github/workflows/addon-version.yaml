@@ -31,6 +31,7 @@ jobs:
             if ! git diff --quiet "$BASE_SHA" "$PR_SHA" -- "$app/Dockerfile"; then
               base_version=$(git show "$BASE_SHA:$config" | sed -nE 's/^version:[[:space:]]*([0-9]+(\.[0-9]+)*)[[:space:]]*$/\1/p' | head -n 1)
               current_version=$(sed -nE 's/^version:[[:space:]]*([0-9]+(\.[0-9]+)*)[[:space:]]*$/\1/p' "$config" | head -n 1)
+              base_image_version=$(sed -nE 's/^ARG BUILD_FROM=.*:([0-9]+(\.[0-9]+)*)[[:space:]]*$/\1/p' "$app/Dockerfile" | head -n 1)
 
               if [[ -z "$base_version" || -z "$current_version" ]]; then
                 echo "Could not read numeric version from $config (base: '${base_version:-missing}', PR: '${current_version:-missing}')."
@@ -38,7 +39,14 @@ jobs:
                 continue
               fi
 
-              if ! BASE_VERSION="$base_version" CURRENT_VERSION="$current_version" python3 - <<'PY'
+              base_version_aligned=false
+              if [[ -n "$base_image_version" && "$current_version" == "${base_image_version}.0" ]]; then
+                base_version_aligned=true
+              fi
+
+              if [[ "$base_version_aligned" == true ]]; then
+                echo "$config version matches the pinned base image: $base_image_version -> $current_version"
+              elif ! BASE_VERSION="$base_version" CURRENT_VERSION="$current_version" python3 - <<'PY'
           import os
           import sys
 
