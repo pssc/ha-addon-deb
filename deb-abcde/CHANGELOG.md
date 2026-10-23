@@ -1,6 +1,7 @@
-## [12.7.8.3.0.1] 2026-10-23
- - Configure the ttyd ping interval
- - Inherit the shared ttyd service launcher and override its command for abcde
+## [9.5.1.1.0] 2026-10-23
+ - Use Debian Base Terminal 9.5.1.1 with the shared multi-architecture build
+ - Remove obsolete architectures and build.json
+ - Configure ttyd through the inherited launcher
 
 ## [12.7.8.3.0.0] 2025-05-19
  - Bump debian base terminal to 12.7.8.3
