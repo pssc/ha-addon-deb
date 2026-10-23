@@ -43,6 +43,18 @@ Flexible disk layout options, additional customisation of packages and startup t
 
 ---
 
+### Option: `ttyd_ping_interval`
+
+Sets how often ttyd sends a WebSocket keepalive ping, in seconds. These pings can
+help keep idle terminal sessions connected through Home Assistant Ingress. The
+default is `30`; allowed values are `1` to `300`. Restart the add-on after
+changing this option. `deb-user` inherits ttyd from the Debian base image and
+uses this setting for that inherited service.
+
+```yaml
+ttyd_ping_interval: 30
+```
+
 ### Option: `mounts` (required may be empty)
 
 Note these paths are not backed up ```[ "/data/music", "/data/mount", "/data/mnt" ]```,

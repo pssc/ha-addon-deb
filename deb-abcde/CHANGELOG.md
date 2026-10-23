@@ -1,3 +1,7 @@
+## [12.7.8.3.0.1] 2026-10-23
+ - Configure the ttyd ping interval
+ - Inherit the shared ttyd service launcher and override its command for abcde
+
 ## [12.7.8.3.0.0] 2025-05-19
  - Bump debian base terminal to 12.7.8.3
  - add flac cli tools

@@ -1,5 +1,5 @@
 name: Debian User Terminal
-version: 9.5.1.0.0
+version: 9.5.1.1.0
 slug: deb-user
 description: User Termnal for the debian shell...
 url: https://github.com/pssc/ha-addon-deb/
@@ -59,12 +59,14 @@ services:
   - mqtt:want
   - mysql:want
 options:
+  ttyd_ping_interval: 30
   links: []
   mounts: []
   dirs: []
   init_commands: []
   packages: []
 schema:
+  ttyd_ping_interval: int(1,300)
   ssl: bool?
   certfile: str?
   keyfile: str?

@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bashio
+
+# Run abcde in its tmux session when ttyd is started by the inherited service.
+ttyd_command=(tmux -u new-session -A -s abcde "abcde -c /config/addons_config/abcde/abcde.conf ; read")

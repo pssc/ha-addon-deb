@@ -1,3 +1,7 @@
+## [9.5.1.1] 2026-10-23
+ - Make the ttyd WebSocket ping interval configurable
+ - Share the ttyd service launcher with derived add-ons
+
 ## [7.3.0.0] 2026-05-22
  - Bump base to 9.3.0
 

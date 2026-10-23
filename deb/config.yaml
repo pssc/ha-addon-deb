@@ -1,5 +1,5 @@
 name: Debian Base Terminal
-version: 9.5.1.0
+version: 9.5.1.1
 slug: deb
 description: Flexable Debian based shell with ttyd and customisation options...
 url: https://github.com/pssc/ha-addon-deb/
@@ -56,12 +56,14 @@ panel_icon: mdi:debian
 panel_title: Base Terminal
 stage: experimental
 options:
+  ttyd_ping_interval: 30
   links: []
   mounts: []
   dirs: []
   init_commands: []
   packages: []
 schema:
+  ttyd_ping_interval: int(1,300)
   ssl: bool?
   certfile: str?
   keyfile: str?

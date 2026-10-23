@@ -1,3 +1,7 @@
+## [9.5.1.1.0] 2026-10-23
+ - Use Debian Base Terminal 9.5.1.1
+ - Add configuration for the inherited ttyd ping interval
+
 ## [9.5.1.0.0] 2026-10-22
  - update Debian Base Terminal image to 9.5.1.0
  - remove obsolete armhf, armv7, and i386 architectures and build.json
