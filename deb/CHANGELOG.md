@@ -2,6 +2,9 @@
  - Make the ttyd WebSocket ping interval configurable
  - Share the ttyd service launcher with derived add-ons
 
+## [9.5.1.0] 2026-10-22
+ - Update the upstream Debian base image to 9.5.1
+
 ## [7.3.0.0] 2026-05-22
  - Bump base to 9.3.0
 

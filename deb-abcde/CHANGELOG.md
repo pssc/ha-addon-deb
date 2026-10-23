@@ -1,3 +1,6 @@
+## [9.5.1.1.1] 2026-10-23
+ - Use modern Dockerfile ENV syntax
+
 ## [9.5.1.1.0] 2026-10-23
  - Use Debian Base Terminal 9.5.1.1 with the shared multi-architecture build
  - Remove obsolete architectures and build.json
