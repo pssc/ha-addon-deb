@@ -1,3 +1,7 @@
+## [9.5.1.2] 2026-10-24
+ - Update ttyd to 1.7.4 and Home Assistant CLI to 5.6.0; hold ttyd below 1.7.5 due to reported idle disconnects
+ - Keep ttyd terminal sessions writable with the new default
+
 ## [9.5.1.1] 2026-10-23
  - Make the ttyd WebSocket ping interval configurable
  - Share the ttyd service launcher with derived add-ons

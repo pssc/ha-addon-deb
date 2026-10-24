@@ -10,5 +10,15 @@
     "deb/**",
     "deb-user/**",
     "deb-abcde/**"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["tsl0922/ttyd"],
+      "allowedVersions": "<1.7.5"
+    },
+    {
+      "matchPackageNames": ["homeassistant-cli"],
+      "allowedVersions": "<1.0.0"
+    }
   ]
 }
