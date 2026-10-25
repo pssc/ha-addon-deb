@@ -11,7 +11,7 @@ declare password
 declare port
 declare username
 
-port=$(bashio::addon.port 22)
+port=$(bashio::app.port 22)
 
 # Don't execute this when SSH is disabled
 if ! bashio::var.has_value "${port}"; then

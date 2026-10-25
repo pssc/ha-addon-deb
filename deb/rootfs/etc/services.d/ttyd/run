@@ -24,7 +24,7 @@ options+=(-W)
 options+=(-i hassio)
 
 # Get assigned Ingress port
-ingress_port=$(bashio::addon.ingress_port)
+ingress_port=$(bashio::app.ingress_port)
 options+=(-p "${ingress_port}")
 # Keep idle terminal sessions alive through Ingress; configurable in the add-on options.
 ttyd_ping_interval=$(bashio::config 'ttyd_ping_interval')

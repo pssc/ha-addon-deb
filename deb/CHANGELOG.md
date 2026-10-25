@@ -1,3 +1,7 @@
+## [9.5.1.3] 2026-10-25
+ - Replace deprecated bashio add-on port helpers with app helpers
+ - Declare optional MQTT and MySQL service access used by startup scripts
+
 ## [9.5.1.2] 2026-10-24
  - Update ttyd to 1.7.4 and Home Assistant CLI to 5.6.0; hold ttyd below 1.7.5 due to reported idle disconnects
  - Keep ttyd terminal sessions writable with the new default
