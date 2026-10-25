@@ -1,9 +1,12 @@
-ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.1
+ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.2
 FROM ${BUILD_FROM}
 ARG target_uid=1000
 ARG debug=true
 
 ARG BUILD_ARCH
+
+# renovate: datasource=pypi depName=homeassistant-cli
+ARG HOMEASSISTANT_CLI_VERSION=0.9.6
 
 # ARGS...
 
@@ -61,7 +64,7 @@ RUN echo deb https://download.docker.com/linux/debian bookworm stable >/etc/apt/
                 docker-ce-cli || true) 
 
 RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log pipx && \
-    pipx install homeassistant-cli==0.9.6
+    pipx install "homeassistant-cli==${HOMEASSISTANT_CLI_VERSION}"
 
 RUN apt-get install -y --no-install-recommends libjson-rpc-perl && cd /sources && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /sources/squeezy
 

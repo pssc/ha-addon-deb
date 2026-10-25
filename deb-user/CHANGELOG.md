@@ -1,3 +1,6 @@
+## [9.5.1.2.0] 2026-10-24
+ - Use Debian Base Terminal 9.5.1.2
+
 ## [9.5.1.1.0] 2026-10-23
  - Use Debian Base Terminal 9.5.1.1
  - Add configuration for the inherited ttyd ping interval
