@@ -14,9 +14,6 @@ ARG HA_CLI_VERSION=5.6.0
 # renovate: datasource=pypi depName=homeassistant-cli
 ARG HOMEASSISTANT_CLI_VERSION=0.9.6
 
-# Keep pipx-installed commands available to all runtime services.
-ENV PIPX_BIN_DIR="/usr/local/bin"
-
 # ARGS...
 
 #FIX From Arg.
@@ -91,7 +88,8 @@ RUN curl -L -s -o /usr/bin/ha \
 RUN cd /sources && git clone --depth 1 -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats ; cd /tmp && rm -r /sources/osync
 
 RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log pipx && \
-    pipx install "homeassistant-cli==${HOMEASSISTANT_CLI_VERSION}"
+    pipx install --global "homeassistant-cli==${HOMEASSISTANT_CLI_VERSION}" && \
+    command -v hass-cli && hass-cli --help >/dev/null
 
 # Patch
 COPY patch /sources/

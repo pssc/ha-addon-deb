@@ -1,3 +1,7 @@
+## [9.5.1.7] 2026-10-25
+ - Install Home Assistant CLI globally so inherited runtime services can execute it
+ - Verify hass-cli is installed and runnable during the image build
+
 ## [9.5.1.6] 2026-10-25
  - Install pipx command links in /usr/local/bin for runtime services
 
