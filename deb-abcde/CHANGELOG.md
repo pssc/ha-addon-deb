@@ -1,3 +1,6 @@
+## [9.5.1.3.2] 2026-10-25
+ - Rebuild against the published Debian Base Terminal 9.5.1.3 image
+
 ## [9.5.1.3.1] 2026-10-25
  - Use the Debian base image's codename for the Debian Multimedia repository
 
