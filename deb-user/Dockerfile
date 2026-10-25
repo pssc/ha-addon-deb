@@ -58,7 +58,8 @@ RUN apt-get update \
                 unzip \
                 rsync 
 
-RUN echo deb https://download.docker.com/linux/debian bookworm stable >/etc/apt/sources.list.d/docker.list && \
+RUN . /etc/os-release && \
+    printf 'deb https://download.docker.com/linux/debian %s stable\n' "${VERSION_CODENAME}" >/etc/apt/sources.list.d/docker.list && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
     apt-get update && (apt-get -y install --no-install-recommends \                                            
                 docker-ce-cli || true) 
@@ -74,16 +75,6 @@ RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/
 # python for HA Dev
 ENV PV=3.13
 RUN apt-get install -y python${PV} python${PV}-venv python${PV}-dev
-#RUN wget -qO- https://pascalroeleven.nl/deb-pascalroeleven.gpg > /etc/apt/keyrings/deb-pascalroeleven.gpg && \
-#cat <<EOF | sudo tee /etc/apt/sources.list.d/pascalroeleven.sources
-#Types: deb
-#URIs: http://deb.pascalroeleven.nl/python${PV}
-#Suites: bookworm-backports
-#Components: main
-#Signed-By: /etc/apt/keyrings/deb-pascalroeleven.gpg
-#EOF
-
-
 COPY patch /sources/
 
 RUN for i in /sources/*.patch;do patch -d / -p1 -i $i;done || true

@@ -1,5 +1,7 @@
-## [9.5.1.2.0] 2026-10-24
+## [9.5.1.2.0] 2026-10-25
  - Use Debian Base Terminal 9.5.1.2
+ - Use the Debian release codename from the base image for Docker's APT repository
+ - Use Debian's Python 3.13 packages instead of the obsolete Bookworm backport
 
 ## [9.5.1.1.0] 2026-10-23
  - Use Debian Base Terminal 9.5.1.1
