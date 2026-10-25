@@ -1,3 +1,6 @@
+## [9.5.1.4.0] 2026-10-25
+ - Rebuild against Debian Base Terminal 9.5.1.4
+
 ## [9.5.1.3.2] 2026-10-25
  - Rebuild against the published Debian Base Terminal 9.5.1.3 image
 

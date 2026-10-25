@@ -1,3 +1,6 @@
+## [9.5.1.4] 2026-10-25
+ - Stop logging environment variables that can contain Supervisor credentials
+
 ## [9.5.1.3] 2026-10-25
  - Replace deprecated bashio add-on port helpers with app helpers
  - Declare optional MQTT and MySQL service access used by startup scripts

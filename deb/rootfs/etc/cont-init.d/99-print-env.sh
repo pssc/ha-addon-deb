@@ -1,7 +1,4 @@
 #!/usr/bin/with-contenv bashio
-# ==============================================================================
-# Community Hass.io Add-ons: lms
-# Set up env from ha
-# ==============================================================================
-
-env
+# Environment variables can contain Supervisor credentials and must not be
+# written to the add-on log.
+exit 0

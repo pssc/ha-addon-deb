@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.3
+ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.4
 FROM ${BUILD_FROM}
 ARG target_uid=1000
 ARG debug=true
@@ -7,6 +7,9 @@ ARG BUILD_ARCH
 
 # renovate: datasource=pypi depName=homeassistant-cli
 ARG HOMEASSISTANT_CLI_VERSION=0.9.6
+
+# pipx installs application entry points here for root.
+ENV PATH="/root/.local/bin:${PATH}"
 
 # ARGS...
 

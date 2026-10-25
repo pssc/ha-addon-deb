@@ -1,3 +1,7 @@
+## [9.5.1.4.0] 2026-10-25
+ - Use Debian Base Terminal 9.5.1.4
+ - Add the pipx application directory to PATH so hass-cli can run
+
 ## [9.5.1.3.0] 2026-10-25
  - Use Debian Base Terminal 9.5.1.3
 
