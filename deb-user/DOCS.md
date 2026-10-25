@@ -88,6 +88,9 @@ links:
 Allows you to specify additional [Debian packages][debian-packages] to be
 installed in your environment (e.g., Python, Joe, Irssi).
 
+The GitHub CLI (`gh`) is included by default. Authenticate with `gh auth login`
+and check the active account with `gh auth status`.
+
 **Note**: _Adding many packages will result in a longer start-up
 time for the add-on._
 

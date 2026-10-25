@@ -1,3 +1,6 @@
+## [9.5.1.7.1] 2026-10-25
+ - Include GitHub CLI (`gh`) for working with GitHub from the terminal
+
 ## [9.5.1.5.1] 2026-10-25
  - Install pipx command links in /usr/local/bin so hass-cli is available to startup services
 

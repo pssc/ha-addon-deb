@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.5
+ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.7
 FROM ${BUILD_FROM}
 ARG target_uid=1000
 ARG debug=true
@@ -59,7 +59,8 @@ RUN apt-get update \
                 pulseaudio-utils \
                 pulsemixer \
                 unzip \
-                rsync 
+                rsync \
+                gh
 
 RUN . /etc/os-release && \
     install -m 0755 -d /etc/apt/keyrings && \
