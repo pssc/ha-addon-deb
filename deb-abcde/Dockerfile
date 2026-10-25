@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.2
+ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.3
 FROM ${BUILD_FROM}
 ARG target_uid=1000
 ARG debug=true
@@ -28,7 +28,8 @@ COPY rootfs/ /
 RUN apt-get update \
     && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
-RUN echo deb http://ftp.uni-kl.de/debian-multimedia/ bookworm main >/etc/apt/sources.list.d/debian-multimedia.list && \
+RUN . /etc/os-release && \
+    printf 'deb https://www.deb-multimedia.org %s main non-free\n' "${VERSION_CODENAME}" >/etc/apt/sources.list.d/debian-multimedia.list && \
     apt-get update -oAcquire::AllowInsecureRepositories=true \
     && apt-get --allow-unauthenticated -y install --no-install-recommends deb-multimedia-keyring \
     && apt-get update \

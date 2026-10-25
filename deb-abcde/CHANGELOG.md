@@ -1,3 +1,10 @@
+## [9.5.1.3.1] 2026-10-25
+ - Use the Debian base image's codename for the Debian Multimedia repository
+
+## [9.5.1.3.0] 2026-10-25
+ - Use Debian Base Terminal 9.5.1.3
+ - Declare optional MySQL service access used by the inherited startup script
+
 ## [9.5.1.2.0] 2026-10-24
  - Use Debian Base Terminal 9.5.1.2
 
