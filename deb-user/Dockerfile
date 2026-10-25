@@ -59,9 +59,12 @@ RUN apt-get update \
                 rsync 
 
 RUN . /etc/os-release && \
-    printf 'deb https://download.docker.com/linux/debian %s stable\n' "${VERSION_CODENAME}" >/etc/apt/sources.list.d/docker.list && \
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
-    apt-get update && (apt-get -y install --no-install-recommends \                                            
+    install -m 0755 -d /etc/apt/keyrings && \
+    curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc && \
+    chmod a+r /etc/apt/keyrings/docker.asc && \
+    printf 'Types: deb\nURIs: https://download.docker.com/linux/debian\nSuites: %s\nComponents: stable\nArchitectures: %s\nSigned-By: /etc/apt/keyrings/docker.asc\n' \
+        "${VERSION_CODENAME}" "$(dpkg --print-architecture)" >/etc/apt/sources.list.d/docker.sources && \
+    apt-get update && (apt-get -y install --no-install-recommends \
                 docker-ce-cli || true) 
 
 RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log pipx && \
