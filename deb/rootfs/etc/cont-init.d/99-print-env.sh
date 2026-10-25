@@ -1,4 +1,3 @@
 #!/usr/bin/with-contenv bashio
-# Environment variables can contain Supervisor credentials and must not be
-# written to the add-on log.
-exit 0
+# Keep environment diagnostics useful while redacting credential values.
+env | sed -E '/^[^=]*(TOKEN|PASSWORD|PASS|SECRET|API_KEY|ACCESS_KEY|PRIVATE_KEY|CREDENTIAL|AUTH)[^=]*=/I s/=.*/=[REDACTED]/'

@@ -1,3 +1,6 @@
+## [9.5.1.5.0] 2026-10-25
+ - Use Debian Base Terminal 9.5.1.5
+
 ## [9.5.1.4.1] 2026-10-25
  - Rebuild after Debian Base Terminal 9.5.1.4 was published
 

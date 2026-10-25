@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.4
+ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.5
 FROM ${BUILD_FROM}
 ARG target_uid=1000
 ARG debug=true

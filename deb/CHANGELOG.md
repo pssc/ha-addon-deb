@@ -1,3 +1,6 @@
+## [9.5.1.5] 2026-10-25
+ - Redact credential-like environment variables while preserving startup diagnostics
+
 ## [9.5.1.4] 2026-10-25
  - Stop logging environment variables that can contain Supervisor credentials
 

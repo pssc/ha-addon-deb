@@ -1,5 +1,5 @@
 name: Debian User Terminal
-version: 9.5.1.4.1
+version: 9.5.1.5.0
 slug: deb-user
 description: User Termnal for the debian shell...
 url: https://github.com/pssc/ha-addon-deb/
