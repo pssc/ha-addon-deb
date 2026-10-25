@@ -1,3 +1,6 @@
+## [9.5.1.6] 2026-10-25
+ - Install pipx command links in /usr/local/bin for runtime services
+
 ## [9.5.1.5] 2026-10-25
  - Redact credential-like environment variables while preserving startup diagnostics
 

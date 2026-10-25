@@ -14,6 +14,9 @@ ARG HA_CLI_VERSION=5.6.0
 # renovate: datasource=pypi depName=homeassistant-cli
 ARG HOMEASSISTANT_CLI_VERSION=0.9.6
 
+# Keep pipx-installed commands available to all runtime services.
+ENV PIPX_BIN_DIR="/usr/local/bin"
+
 # ARGS...
 
 #FIX From Arg.
