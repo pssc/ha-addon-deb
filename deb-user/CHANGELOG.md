@@ -1,3 +1,6 @@
+## [9.5.1.3.0] 2026-10-25
+ - Use Debian Base Terminal 9.5.1.3
+
 ## [9.5.1.2.0] 2026-10-25
  - Use Debian Base Terminal 9.5.1.2
  - Use the Debian release codename from the base image for Docker's APT repository
