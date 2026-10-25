@@ -1,3 +1,6 @@
+## [9.5.1.5.1] 2026-10-25
+ - Install pipx command links in /usr/local/bin so hass-cli is available to startup services
+
 ## [9.5.1.5.0] 2026-10-25
  - Use Debian Base Terminal 9.5.1.5, which redacts credential values in environment logs
 

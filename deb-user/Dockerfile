@@ -8,8 +8,8 @@ ARG BUILD_ARCH
 # renovate: datasource=pypi depName=homeassistant-cli
 ARG HOMEASSISTANT_CLI_VERSION=0.9.6
 
-# pipx installs application entry points here for root.
-ENV PATH="/root/.local/bin:${PATH}"
+# Put pipx-installed commands in the system PATH for all runtime services.
+ENV PIPX_BIN_DIR="/usr/local/bin"
 
 # ARGS...
 
