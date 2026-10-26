@@ -1,7 +1,5 @@
-This is a basic debian based shell terminal with a minuium of tools as a base for a User Termnial and specific terminal based applications.
+# Debian Base Terminal
 
-Flexible disk layout options.
+A flexible Debian shell for Home Assistant, with access through the app's Web UI and optional SSH. It provides the shared terminal and startup services used by the `deb-user` and `abcde` apps.
 
-* *Most certainly* doesn't mine bitcoin on your home automation server.  Definitely no.
-
-See the [readme on GitHub](https://github.com/pssc/ha-addon-deb) for all the details, or just install the add-on and open the Web UI.
+The WebSocket keepalive interval is configurable with `ttyd_ping_interval` (default: 30 seconds). See [DOCS.md](DOCS.md) for installation, configuration, and usage details, and [CHANGELOG.md](CHANGELOG.md) for release notes.

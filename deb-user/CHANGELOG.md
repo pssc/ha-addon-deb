@@ -1,4 +1,5 @@
 ## [9.5.1.0.0] 2026-10-26
+ - Rebuild from the refreshed Debian Base Terminal image so the inherited Home Assistant CLI health check uses the Supervisor API endpoint
  - Use Debian Base Terminal 9.5.1.0 and its system-wide Home Assistant CLI
  - Include GitHub CLI (`gh`) for working with GitHub from the terminal
  - Install Docker CLI from Docker's Debian repository, using the release codename and supported keyring format

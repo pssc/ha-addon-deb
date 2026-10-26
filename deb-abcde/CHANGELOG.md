@@ -1,4 +1,5 @@
 ## [9.5.1.0.0] 2026-10-26
+ - Rebuild from the refreshed Debian Base Terminal image so the inherited Home Assistant CLI health check uses the Supervisor API endpoint
  - Use Debian Base Terminal 9.5.1.0, inheriting its shared ttyd launcher and configurable WebSocket ping interval
  - Use the Debian release codename for the Debian Multimedia repository
  - Declare optional MySQL service access used by inherited startup scripts

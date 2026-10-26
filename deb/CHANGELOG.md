@@ -1,4 +1,5 @@
 ## [9.5.1.0] 2026-10-26
+ - Use the Supervisor Core API endpoint and token for the hass-cli health check, avoiding a dependency on resolving `homeassistant.local`
  - Update the upstream Debian base image to 9.5.1
  - Upgrade ttyd to 1.7.4 and the Home Assistant CLI to 5.6.0; keep ttyd below 1.7.5 due to reported idle disconnects
  - Make ttyd's WebSocket ping interval configurable and share its launcher with derived apps
