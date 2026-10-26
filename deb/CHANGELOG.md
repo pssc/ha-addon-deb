@@ -1,30 +1,10 @@
-## [9.5.1.7] 2026-10-25
- - Install Home Assistant CLI globally so inherited runtime services can execute it
- - Verify hass-cli is installed and runnable during the image build
-
-## [9.5.1.6] 2026-10-25
- - Install pipx command links in /usr/local/bin for runtime services
-
-## [9.5.1.5] 2026-10-25
- - Redact credential-like environment variables while preserving startup diagnostics
-
-## [9.5.1.4] 2026-10-25
- - Stop logging environment variables that can contain Supervisor credentials
-
-## [9.5.1.3] 2026-10-25
- - Replace deprecated bashio add-on port helpers with app helpers
- - Declare optional MQTT and MySQL service access used by startup scripts
-
-## [9.5.1.2] 2026-10-24
- - Update ttyd to 1.7.4 and Home Assistant CLI to 5.6.0; hold ttyd below 1.7.5 due to reported idle disconnects
- - Keep ttyd terminal sessions writable with the new default
-
-## [9.5.1.1] 2026-10-23
- - Make the ttyd WebSocket ping interval configurable
- - Share the ttyd service launcher with derived add-ons
-
-## [9.5.1.0] 2026-10-22
+## [9.5.1.0] 2026-10-26
  - Update the upstream Debian base image to 9.5.1
+ - Make ttyd's WebSocket ping interval configurable and share its launcher with derived apps
+ - Hold ttyd at 1.7.4 because newer releases have reported idle disconnects
+ - Update the Home Assistant CLI and install hass-cli globally for inherited runtime services
+ - Declare optional MQTT and MySQL service access and use current bashio app helpers
+ - Redact credential-like environment values while retaining useful startup diagnostics
 
 ## [7.3.0.0] 2026-05-22
  - Bump base to 9.3.0
