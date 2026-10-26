@@ -1,3 +1,23 @@
+## [9.5.1.0.0] 2026-10-26
+ - Rebuild from the refreshed Debian Base Terminal image so the inherited Home Assistant CLI health check uses the Supervisor API endpoint
+ - Use Debian Base Terminal 9.5.1.0 and its system-wide Home Assistant CLI
+ - Include GitHub CLI (`gh`) for working with GitHub from the terminal
+ - Install Docker CLI from Docker's Debian repository, using the release codename and supported keyring format
+ - Use Debian's Python 3.13 packages
+ - Add the inherited ttyd ping interval option
+ - Remove obsolete architectures and build.json
+
+## [12.7.8.3.0.0] 2025-05-18
+ - bump base terminal 12.7.8.3.0
+ - add python3.13 for HA dev work. not armv7 or i386
+
+## [12.5.12.4] 2025-02-28
+ - add pulse cli tools
+ - update map of config paths and enable descrete addon config
+
+## [12.5.12.3] 2024-09-11
+ - add unzip
+
 ## [12.5.12.2] 2024-08-07
  - Allow access to addon_configs
 
@@ -23,6 +43,7 @@
 
 ## [12.5.1.0] 2024-04-1
  - Debian Base Terminal to 12.5.1
+
 ## [0.0.8] 2022-08-16
 
 ### Changes

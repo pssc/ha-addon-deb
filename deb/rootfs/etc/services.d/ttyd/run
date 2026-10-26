@@ -6,6 +6,7 @@
 declare ttyd_command
 declare -a options
 declare ingress_port
+declare ttyd_ping_interval
 
 bashio::log.info 'Starting the ttyd daemon...'
 
@@ -16,16 +17,29 @@ else
     options+=(-d1)
 fi
 
+# ttyd 1.7.4+ is read-only by default; keep the terminal interactive.
+options+=(-W)
+
 # Listen on Supervisor interface only
 options+=(-i hassio)
 
 # Get assigned Ingress port
-ingress_port=$(bashio::addon.ingress_port)
+ingress_port=$(bashio::app.ingress_port)
 options+=(-p "${ingress_port}")
+# Keep idle terminal sessions alive through Ingress; configurable in the add-on options.
+ttyd_ping_interval=$(bashio::config 'ttyd_ping_interval')
+options+=(-P "${ttyd_ping_interval}")
 
 ttyd_command=(tmux -u new -A -s homeassistant zsh -l)
 if ! bashio::config.true "zsh"; then
     ttyd_command=(tmux -u new -A -s homeassistant bash -l)
+fi
+
+# Derived add-ons can provide a command override without replacing this service script.
+if [[ -f /etc/ttyd/command ]]; then
+    # The override must assign the ttyd_command array.
+    # shellcheck source=/dev/null
+    source /etc/ttyd/command
 fi
 
 # Change working directory

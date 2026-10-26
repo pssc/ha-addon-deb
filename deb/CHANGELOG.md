@@ -1,3 +1,18 @@
+## [9.5.1.0] 2026-10-26
+ - Use the Supervisor Core API endpoint and token for the hass-cli health check, avoiding a dependency on resolving `homeassistant.local`
+ - Update the upstream Debian base image to 9.5.1
+ - Upgrade ttyd to 1.7.4 and the Home Assistant CLI to 5.6.0; keep ttyd below 1.7.5 due to reported idle disconnects
+ - Make ttyd's WebSocket ping interval configurable and share its launcher with derived apps
+ - Install hass-cli 0.9.6 and pipx command links globally so inherited runtime services can use them
+ - Declare optional MQTT and MySQL service access and use current bashio app helpers
+ - Redact credential-like environment values while retaining useful startup diagnostics
+
+## [7.3.0.0] 2026-05-22
+ - Bump base to 9.3.0
+
+## [12.5.12] 2024-05-19
+ - Bump base to 7.8.3
+
 ## [12.5.12] 2024-05-19
 
 ### Changes

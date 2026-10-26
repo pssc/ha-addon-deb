@@ -1,28 +1,38 @@
-ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb-amd64:latest
+ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.0
 FROM ${BUILD_FROM}
+# Rebuild when the pinned base image is refreshed without a version change.
 ARG target_uid=1000
 ARG debug=true
 
 ARG BUILD_ARCH
+
+# renovate: datasource=pypi depName=homeassistant-cli
+ARG HOMEASSISTANT_CLI_VERSION=0.9.6
+
+# Put pipx-installed commands in the system PATH for all runtime services.
+ENV PIPX_BIN_DIR="/usr/local/bin"
 
 # ARGS...
 
 #FIX From Arg.
 # env
 # Allow longer shutdown
-ENV S6_SERVICES_GRACETIME 119000
+ENV S6_SERVICES_GRACETIME=119000
 # Set for package install
-ENV DEBIAN_FRONTEND "noninteractive" 
+ENV DEBIAN_FRONTEND="noninteractive" 
 # FIXME? locales
 #ENV LANG C.UTF-8
 # TZ config at runtime
-ENV DISABLE_HA_AUTHENTICATION true
+ENV DISABLE_HA_AUTHENTICATION=true
 
+# Force build 2
 # LMS 
 # Debug?
-ENV HA_USER "squeezeboxserver"
-ENV UDEV false
+ENV HA_USER="hauser"
+ENV UDEV=false
 
+ENV TEST_A=fish
+ENV TEST_AB=${TEST_A}+chips
 
 COPY rootfs/ /
 
@@ -47,22 +57,32 @@ RUN apt-get update \
                 android-file-transfer \
                 mosquitto-clients \
                 mariadb-client \
-                rsync 
+                pulseaudio-utils \
+                pulsemixer \
+                unzip \
+                rsync \
+                gh
 
-RUN echo deb https://download.docker.com/linux/debian bookworm stable >/etc/apt/sources.list.d/docker.list && \
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
-    apt-get update && (apt-get -y install --no-install-recommends \                                            
+RUN . /etc/os-release && \
+    install -m 0755 -d /etc/apt/keyrings && \
+    curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc && \
+    chmod a+r /etc/apt/keyrings/docker.asc && \
+    printf 'Types: deb\nURIs: https://download.docker.com/linux/debian\nSuites: %s\nComponents: stable\nArchitectures: %s\nSigned-By: /etc/apt/keyrings/docker.asc\n' \
+        "${VERSION_CODENAME}" "$(dpkg --print-architecture)" >/etc/apt/sources.list.d/docker.sources && \
+    apt-get update && (apt-get -y install --no-install-recommends \
                 docker-ce-cli || true) 
 
 RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log pipx && \
-    pipx install homeassistant-cli==0.9.6
-                                                                                                                                                                                                                                                                            
-RUN apt-get install -y --no-install-recommends libjson-rpc-perl && cd /sources && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /sources/squeezy                                          
-                                                                                                                                                                                                                                                                            
-# oh-my-bash                                                                                                                                                                                                                                                                
+    pipx install "homeassistant-cli==${HOMEASSISTANT_CLI_VERSION}"
+
+RUN apt-get install -y --no-install-recommends libjson-rpc-perl && cd /sources && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /sources/squeezy
+
+# oh-my-bash
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --prefix=/usr/local --unattended                  
 
-
+# python for HA Dev
+ENV PV=3.13
+RUN apt-get install -y python${PV} python${PV}-venv python${PV}-dev
 COPY patch /sources/
 
 RUN for i in /sources/*.patch;do patch -d / -p1 -i $i;done || true

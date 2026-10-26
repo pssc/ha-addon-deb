@@ -1,14 +1,7 @@
-A complete and easy way for running [abcde](https://abcde.einval.com/wiki/)
+# abcde
 
-Enchanced abcde fatures for mp3/eyeD3 and musicbrainz
- - ALBUARTIST tag support
- - musicbrainz GENRE support
- - eyeD3 GENRE support enchanced
+A Home Assistant terminal app for ripping CDs with [abcde](https://abcde.einval.com/wiki/). The image includes audio encoders and enhanced tagging support for Album Artist and MusicBrainz/EyeD3 genres.
 
-Flexible disk layout options and addional packages
+The app inherits its terminal, Ingress support, and configurable WebSocket keepalive from [Debian Base Terminal](../deb/README.md). Its abcde configuration is stored at `/config/addons_config/abcde/abcde.conf`.
 
-* *Most certainly* doesn't mine bitcoin on your home automation server.  Definitely no.
-
-See the [readme on GitHub](https://github.com/pssc/ha-addon-deb/deb-abcde) for all the details, or just install the add-on and open the Web UI.
-
-Default config `/config/addons_config/abcde/abcde.conf`
+See [DOCS.md](DOCS.md) for setup and configuration details, and [CHANGELOG.md](CHANGELOG.md) for release notes.

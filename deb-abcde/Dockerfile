@@ -1,5 +1,6 @@
-ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb-amd64:latest
+ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.0
 FROM ${BUILD_FROM}
+# Rebuild when the pinned base image is refreshed without a version change.
 ARG target_uid=1000
 ARG debug=true
 
@@ -10,25 +11,26 @@ ARG BUILD_ARCH
 #FIX From Arg.
 # env
 # Allow longer shutdown
-ENV S6_SERVICES_GRACETIME 119000
+ENV S6_SERVICES_GRACETIME=119000
 # Set for package install
-ENV DEBIAN_FRONTEND "noninteractive" 
+ENV DEBIAN_FRONTEND="noninteractive"
 # FIXME? locales
 #ENV LANG C.UTF-8
 # TZ config at runtime
-ENV DISABLE_HA_AUTHENTICATION true
+ENV DISABLE_HA_AUTHENTICATION=true
 
 # LMS 
 # Debug?
-ENV HA_USER "squeezeboxserver"
-ENV UDEV false
+ENV HA_USER="squeezeboxserver"
+ENV UDEV=false
 
 COPY rootfs/ /
 
 RUN apt-get update \
     && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
-RUN echo deb http://ftp.uni-kl.de/debian-multimedia/ bookworm main >/etc/apt/sources.list.d/debian-multimedia.list && \
+RUN . /etc/os-release && \
+    printf 'deb https://www.deb-multimedia.org %s main non-free\n' "${VERSION_CODENAME}" >/etc/apt/sources.list.d/debian-multimedia.list && \
     apt-get update -oAcquire::AllowInsecureRepositories=true \
     && apt-get --allow-unauthenticated -y install --no-install-recommends deb-multimedia-keyring \
     && apt-get update \
@@ -36,6 +38,7 @@ RUN echo deb http://ftp.uni-kl.de/debian-multimedia/ bookworm main >/etc/apt/sou
     	abcde \
         eject \
         lame \
+        flac \
         eyed3 \
         aacgain \
         rsync \

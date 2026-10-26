@@ -1,0 +1,7 @@
+configuration:
+  ttyd_ping_interval:
+    name: WebSocket ping interval
+    description: >-
+      How often ttyd sends a WebSocket keepalive ping, in seconds. This can help
+      keep idle terminal sessions connected through Home Assistant Ingress.
+      The default is 30 seconds. Restart the add-on after changing this value.

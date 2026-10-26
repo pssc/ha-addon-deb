@@ -1,128 +1,80 @@
-# Home Assistant Add-on: Debian Shell (Unoffical)
+# Debian Base Terminal
+
+Debian Base Terminal provides an interactive shell in Home Assistant. Open the app's **Web UI** to use the terminal through Ingress. SSH is also available when a host port is configured for TCP port 22.
 
 ## Installation
 
-Follow these steps to get the add-on installed on your system:
+Install **Debian Base Terminal** from your Home Assistant app repository, then start it and open **Web UI**.
 
-1. Navigate in your Home Assistant frontend to **Supervisor** -> **Add-on Store**.
-2. Find the "Debian" add-on and click it.
-3. Click on the "INSTALL" button.
+## Configuration
 
-## How to use
+The options below are applied when the app starts. Restart the app after changing them.
 
-Navigate to the web UI via ingress or directly on port 9000 and configure.
+### WebSocket ping interval
 
-## Add-on Configuration
-
-The LMS server add-on can be tweaked to your liking. This section
-describes each of the add-on configuration options.
-
-default locations
- - /config/
-
-Addional software:-
- - osync
- - rsync
- - squeezy
-
-Example basic config:-
+`ttyd_ping_interval` controls how often ttyd sends a WebSocket keepalive ping, in seconds. This can help keep idle terminal sessions connected through Ingress. The default is `30`; allowed values are `1` to `300`.
 
 ```yaml
-          "mounts": [],
-          "dirs": [],
-          "links": [],
-          "init_commands": [],
-          "packages": []
+ttyd_ping_interval: 30
 ```
 
----
+### Debian packages
 
-### Option group `Environment`
-
-Flexible disk layout options, additional customisation of packages and startup to allow migration of existing setups.  As well as the installation of plugins.
-
----
-
-### Option: `mounts` (required may be empty)
-
-Note these paths are not backed up ```[ "/data/music", "/data/mount", "/data/mnt" ]```,
-
-```yaml
-mounts:
-  - '-t nfs storage-music.lan:/srv/store/music /data/mnt/music'
-```
-
-### Option: `dirs` (required may be empty)
-
-Directories to create.
-
-```yanml
-dirs:
-  - /data/mnt/music
-```
-
-### Option: `links` (required may be empty)
-
-Links to create.
-
-```yanml
-links:
-  - dest: /data/mnt/music
-    link: /var/music
-```
-
-#### Option: `packages` (required may be empty)
-
-Allows you to specify additional [Debian packages][debian-packages] to be
-installed in your environment (e.g., Python, Joe, Irssi).
-
-**Note**: _Adding many packages will result in a longer start-up
-time for the add-on._
+`packages` is a list of Debian package names to install at startup.
 
 ```yaml
 packages:
   - rsync
 ```
-#### Option: `init_commands` (required may be empty)
 
-Customize your environment even more with the `init_commands` option.
-Add one or more shell commands to the list, and they will be executed every
-single time this add-on starts. Before LMS starts
+Installing additional packages can increase startup time.
+
+### Startup commands
+
+`init_commands` is a list of shell commands run each time the app starts.
 
 ```yaml
 init_commands:
   - /config/deb/scripts/fixups.sh
 ```
 
-### Option group `ssh`
+### Mounts
 
-Options affecting the ssh server
-
----
-
-### Option: `options`
-
-Additional options string to run server with.
+`mounts` is a list of mount command arguments. The app has elevated host access, so use mount options appropriate for your Home Assistant system.
 
 ```yaml
-options: '--debug'
+mounts:
+  - '-t nfs storage-music.lan:/srv/store/music /data/mnt/music'
 ```
+
+### Directories
+
+`dirs` is a list of directories to create at startup. The app assigns them to its configured shell user.
+
+```yaml
+dirs:
+  - /data/mnt/music
+```
+
+### Symbolic links
+
+`links` is a list of symbolic links to create. `link` is the path of the link; `dest` is its target.
+
+```yaml
+links:
+  - link: /var/music
+    dest: /data/mnt/music
+```
+
+### Persistent storage
+
+Home Assistant provides the configured paths under `/config`, `/share`, `/backup`, `/media`, and `/addons`. Data stored outside mapped paths or designated persistent directories may not survive app recreation. User data in `/data/music`, `/data/mount`, `/data/mnt`, `/data/nobackup`, and `/data/force_build` is excluded from app backups.
+
+## Related apps
+
+- [Debian User Terminal](../deb-user/README.md) adds user-focused development tools.
+- [abcde](../deb-abcde/README.md) provides a CD-ripping terminal based on this image.
 
 ## Support
 
-Got questions?
-
-You have several options to get them answered:
-
-- The [Home Assistant Discord Chat Server][discord].
-- The Home Assistant [Community Forum][forum].
-- Join the [Reddit subreddit][reddit] in [/r/homeassistant][reddit]
-
-In case you've found a bug, please [open an issue on our GitHub][issue].
-
-[discord]: https://discord.gg/c5DvZ4e
-[forum]: https://community.home-assistant.io
-[issue]: https://github.com/pssc/ha-addon-deb/issues
-[reddit]: https://reddit.com/r/homeassistant
-[repository]: https://github.com/pssc/ha-addon-deb
-[debian-packages]: https://packages.debian.org/
+Report issues at [GitHub Issues](https://github.com/pssc/ha-addon-deb/issues).

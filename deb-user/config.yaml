@@ -1,14 +1,11 @@
 name: Debian User Terminal
-version: 12.5.12.2
+version: 9.5.1.0.0
 slug: deb-user
-description: User Termnal for the debian shell.
+description: User Termnal for the debian shell...
 url: https://github.com/pssc/ha-addon-deb/
 arch:
-  - armhf
-  - armv7
   - aarch64
   - amd64
-  - i386
 init: false
 startup: services
 stdin: true
@@ -20,7 +17,8 @@ ports_description:
   22/tcp: SSH Access
 timeout: 180
 map:
-  - config:rw
+  - homeassistant_config:rw
+  - addon_config:rw
   - all_addon_configs:rw
   - ssl
   - share:rw
@@ -61,12 +59,14 @@ services:
   - mqtt:want
   - mysql:want
 options:
+  ttyd_ping_interval: 30
   links: []
   mounts: []
   dirs: []
   init_commands: []
   packages: []
 schema:
+  ttyd_ping_interval: int(1,300)
   ssl: bool?
   certfile: str?
   keyfile: str?
@@ -90,5 +90,5 @@ schema:
     - str?
   packages:
     - str?
-image: "ghcr.io/pssc/ha-addon-deb-user-{arch}"
+image: ghcr.io/pssc/ha-addon-deb-user
 

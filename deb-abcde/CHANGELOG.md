@@ -1,3 +1,15 @@
+## [9.5.1.0.0] 2026-10-26
+ - Rebuild from the refreshed Debian Base Terminal image so the inherited Home Assistant CLI health check uses the Supervisor API endpoint
+ - Use Debian Base Terminal 9.5.1.0, inheriting its shared ttyd launcher and configurable WebSocket ping interval
+ - Use the Debian release codename for the Debian Multimedia repository
+ - Declare optional MySQL service access used by inherited startup scripts
+ - Remove obsolete architectures and build.json
+ - Use modern Dockerfile ENV syntax
+
+## [12.7.8.3.0.0] 2025-05-19
+ - Bump debian base terminal to 12.7.8.3
+ - add flac cli tools
+
 ## [12.5.12.0] 2024-04-21
  - Bump debian base terminal to 12.5.12 for naming fixes
 
