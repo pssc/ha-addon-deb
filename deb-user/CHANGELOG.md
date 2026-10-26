@@ -1,7 +1,7 @@
 ## [9.5.1.0.0] 2026-10-26
  - Use Debian Base Terminal 9.5.1.0 and its system-wide Home Assistant CLI
  - Include GitHub CLI (`gh`) for working with GitHub from the terminal
- - Configure Docker's Debian repository with the release codename and keyring
+ - Install Docker CLI from Docker's Debian repository, using the release codename and supported keyring format
  - Use Debian's Python 3.13 packages
  - Add the inherited ttyd ping interval option
  - Remove obsolete architectures and build.json

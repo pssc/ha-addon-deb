@@ -1,8 +1,7 @@
 ## [9.5.1.0.0] 2026-10-26
- - Use Debian Base Terminal 9.5.1.0
+ - Use Debian Base Terminal 9.5.1.0, inheriting its shared ttyd launcher and configurable WebSocket ping interval
  - Use the Debian release codename for the Debian Multimedia repository
  - Declare optional MySQL service access used by inherited startup scripts
- - Use the inherited ttyd launcher and shared multi-architecture build
  - Remove obsolete architectures and build.json
  - Use modern Dockerfile ENV syntax
 

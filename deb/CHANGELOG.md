@@ -1,8 +1,8 @@
 ## [9.5.1.0] 2026-10-26
  - Update the upstream Debian base image to 9.5.1
+ - Upgrade ttyd to 1.7.4 and the Home Assistant CLI to 5.6.0; keep ttyd below 1.7.5 due to reported idle disconnects
  - Make ttyd's WebSocket ping interval configurable and share its launcher with derived apps
- - Hold ttyd at 1.7.4 because newer releases have reported idle disconnects
- - Update the Home Assistant CLI and install hass-cli globally for inherited runtime services
+ - Install hass-cli 0.9.6 and pipx command links globally so inherited runtime services can use them
  - Declare optional MQTT and MySQL service access and use current bashio app helpers
  - Redact credential-like environment values while retaining useful startup diagnostics
 
