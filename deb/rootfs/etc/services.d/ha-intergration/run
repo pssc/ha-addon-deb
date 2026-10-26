@@ -23,7 +23,9 @@ function setup() {
 #	bashio::net.wait_for 9000 localhost 900
 #	bashio::net.wait_for 8123 localhost 900
 #	bashio::net.wait_for 80 supervisor 900
-	hass-cli system health || true
+	HASS_SERVER="http://supervisor/core" \
+	HASS_TOKEN="${SUPERVISOR_TOKEN}" \
+		hass-cli system health || true
 #	( while true;do lms-sensors; sleep ${POLL_INTERVAL:-60} ;done ) &
 }
 
