@@ -1,38 +1,10 @@
-## [9.5.1.7.0] 2026-10-25
- - Use Debian Base Terminal 9.5.1.7
-
-## [9.5.1.5.1] 2026-10-25
- - Rebuild after Debian Base Terminal 9.5.1.5 was published
-
-## [9.5.1.5.0] 2026-10-25
- - Use Debian Base Terminal 9.5.1.5
-
-## [9.5.1.4.1] 2026-10-25
- - Rebuild after Debian Base Terminal 9.5.1.4 was published
-
-## [9.5.1.4.0] 2026-10-25
- - Rebuild against Debian Base Terminal 9.5.1.4
-
-## [9.5.1.3.2] 2026-10-25
- - Rebuild against the published Debian Base Terminal 9.5.1.3 image
-
-## [9.5.1.3.1] 2026-10-25
- - Use the Debian base image's codename for the Debian Multimedia repository
-
-## [9.5.1.3.0] 2026-10-25
- - Use Debian Base Terminal 9.5.1.3
- - Declare optional MySQL service access used by the inherited startup script
-
-## [9.5.1.2.0] 2026-10-24
- - Use Debian Base Terminal 9.5.1.2
-
-## [9.5.1.1.1] 2026-10-23
- - Use modern Dockerfile ENV syntax
-
-## [9.5.1.1.0] 2026-10-23
- - Use Debian Base Terminal 9.5.1.1 with the shared multi-architecture build
+## [9.5.1.0.0] 2026-10-26
+ - Use Debian Base Terminal 9.5.1.0
+ - Use the Debian release codename for the Debian Multimedia repository
+ - Declare optional MySQL service access used by inherited startup scripts
+ - Use the inherited ttyd launcher and shared multi-architecture build
  - Remove obsolete architectures and build.json
- - Configure ttyd through the inherited launcher
+ - Use modern Dockerfile ENV syntax
 
 ## [12.7.8.3.0.0] 2025-05-19
  - Bump debian base terminal to 12.7.8.3

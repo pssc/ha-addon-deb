@@ -1,35 +1,10 @@
-## [9.5.1.7.1] 2026-10-25
+## [9.5.1.0.0] 2026-10-26
+ - Use Debian Base Terminal 9.5.1.0 and its system-wide Home Assistant CLI
  - Include GitHub CLI (`gh`) for working with GitHub from the terminal
-
-## [9.5.1.5.1] 2026-10-25
- - Install pipx command links in /usr/local/bin so hass-cli is available to startup services
-
-## [9.5.1.5.0] 2026-10-25
- - Use Debian Base Terminal 9.5.1.5, which redacts credential values in environment logs
-
-## [9.5.1.4.1] 2026-10-25
- - Rebuild after Debian Base Terminal 9.5.1.4 was published
-
-## [9.5.1.4.0] 2026-10-25
- - Use Debian Base Terminal 9.5.1.4
- - Add the pipx application directory to PATH so hass-cli can run
-
-## [9.5.1.3.0] 2026-10-25
- - Use Debian Base Terminal 9.5.1.3
-
-## [9.5.1.2.0] 2026-10-25
- - Use Debian Base Terminal 9.5.1.2
- - Use the Debian release codename from the base image for Docker's APT repository
- - Configure Docker's APT signing key with the supported keyring format
- - Use Debian's Python 3.13 packages instead of the obsolete Bookworm backport
-
-## [9.5.1.1.0] 2026-10-23
- - Use Debian Base Terminal 9.5.1.1
- - Add configuration for the inherited ttyd ping interval
-
-## [9.5.1.0.0] 2026-10-22
- - update Debian Base Terminal image to 9.5.1.0
- - remove obsolete armhf, armv7, and i386 architectures and build.json
+ - Configure Docker's Debian repository with the release codename and keyring
+ - Use Debian's Python 3.13 packages
+ - Add the inherited ttyd ping interval option
+ - Remove obsolete architectures and build.json
 
 ## [12.7.8.3.0.0] 2025-05-18
  - bump base terminal 12.7.8.3.0
