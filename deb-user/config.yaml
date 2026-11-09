@@ -23,10 +23,13 @@ map:
     read_only: false
   - type: all_app_configs
     read_only: false
-  - ssl
-  - share:rw
-  - backup:rw
-  - media:rw
+  - type: ssl
+  - type: share
+    read_only: false
+  - type: backup
+    read_only: false
+  - type: media
+    read_only: false
   - type: local_apps
     read_only: false
 tmpfs: true
