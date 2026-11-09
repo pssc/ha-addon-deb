@@ -68,7 +68,7 @@ links:
 
 ### Persistent storage
 
-Home Assistant provides the configured paths under `/config`, `/share`, `/backup`, `/media`, and `/addons`. Data stored outside mapped paths or designated persistent directories may not survive app recreation. User data in `/data/music`, `/data/mount`, `/data/mnt`, `/data/nobackup`, and `/data/force_build` is excluded from app backups.
+The app configuration is mounted at `/config`; Home Assistant's configuration is at `/homeassistant`. Shared app configuration is at `/app_configs`, local apps are at `/local_apps`, and shared files are under `/share`, `/backup`, and `/media`. Compatibility links keep `/addon_configs` and `/addons` available for older user or third-party scripts. Data stored outside mapped paths or designated persistent directories may not survive app recreation. User data in `/data/music`, `/data/mount`, `/data/mnt`, `/data/nobackup`, and `/data/force_build` is excluded from app backups.
 
 ## Related apps
 

@@ -1,3 +1,8 @@
+## [9.5.2.0] 2026-11-09
+ - Update the upstream Debian base image from 9.5.1 to 9.5.2
+ - Replace deprecated mount names with current app mount types and their default paths
+ - Keep `/addons` and `/addon_configs` available as compatibility links for older user and third-party scripts
+
 ## [9.5.1.0] 2026-10-26
  - Use the Supervisor Core API endpoint and token for the hass-cli health check, avoiding a dependency on resolving `homeassistant.local`
  - Update the upstream Debian base image to 9.5.1

@@ -1,5 +1,5 @@
 name: Debian Base Terminal
-version: 9.5.1.0
+version: 9.5.2.0
 slug: deb
 description: Flexable Debian based shell with ttyd and customisation options...
 url: https://github.com/pssc/ha-addon-deb/
@@ -24,10 +24,14 @@ map:
   - share:rw
   - backup:rw
   - media:rw
-  - addons:rw
-  - addon_config:rw
-  - all_addon_configs:rw
-  - homeassistant_config:rw
+  - type: local_apps
+    read_only: false
+  - type: app_config
+    read_only: false
+  - type: all_app_configs
+    read_only: false
+  - type: homeassistant_config
+    read_only: false
 tmpfs: true
 host_dbus: true
 docker_api: true
