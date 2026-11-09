@@ -1,5 +1,5 @@
 name: Debian User Terminal
-version: 9.5.1.0.0
+version: 9.5.2.0.0
 slug: deb-user
 description: User Termnal for the debian shell...
 url: https://github.com/pssc/ha-addon-deb/
@@ -17,14 +17,18 @@ ports_description:
   22/tcp: SSH Access
 timeout: 180
 map:
-  - homeassistant_config:rw
-  - addon_config:rw
-  - all_addon_configs:rw
+  - type: homeassistant_config
+    read_only: false
+  - type: app_config
+    read_only: false
+  - type: all_app_configs
+    read_only: false
   - ssl
   - share:rw
   - backup:rw
   - media:rw
-  - addons:rw
+  - type: local_apps
+    read_only: false
 tmpfs: true
 docker_api: true
 hassio_api: true

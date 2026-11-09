@@ -1,5 +1,5 @@
 name: Abcde
-version: 9.5.1.0.0
+version: 9.5.2.0.0
 slug: deb-abcde
 description: Grab an entire CD and compress it to Ogg/Vorbis, MP3, FLAC, AAC, Ogg/Speex
   and/or MPP/MP+(Musepack) format via the debian shell.
@@ -21,12 +21,16 @@ services:
   - mysql:want
 timeout: 180
 map:
-  - config:rw
+  - type: homeassistant_config
+    read_only: false
+  - type: app_config
+    read_only: false
   - ssl
   - share:rw
   - backup:rw
   - media:rw
-  - addons:rw
+  - type: local_apps
+    read_only: false
 tmpfs: true
 docker_api: true
 hassio_api: true

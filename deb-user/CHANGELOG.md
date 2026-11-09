@@ -1,3 +1,7 @@
+## [9.5.2.0.0] 2026-11-09
+ - Replace deprecated mount names with current app mount types and their default paths
+ - Rebuild from Debian Base Terminal 9.5.2.0
+
 ## [9.5.1.0.0] 2026-10-26
  - Rebuild from the refreshed Debian Base Terminal image so the inherited Home Assistant CLI health check uses the Supervisor API endpoint
  - Use Debian Base Terminal 9.5.1.0 and its system-wide Home Assistant CLI

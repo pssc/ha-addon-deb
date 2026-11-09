@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.1.0
+ARG BUILD_FROM=ghcr.io/pssc/ha-addon-deb:9.5.2.0
 FROM ${BUILD_FROM}
 # Rebuild when the pinned base image is refreshed without a version change.
 ARG target_uid=1000

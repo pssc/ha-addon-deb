@@ -1,3 +1,8 @@
+## [9.5.2.0.0] 2026-11-09
+ - Rebuild from Debian Base Terminal 9.5.2.0, inheriting its current app mount paths and compatibility links
+ - Use the current Home Assistant config mount at `/homeassistant` and the default local apps path
+ - Keep abcde configuration in the Home Assistant config folder and provide `/config/addons_config` as a compatibility link for older user scripts
+
 ## [9.5.1.0.0] 2026-10-26
  - Rebuild from the refreshed Debian Base Terminal image so the inherited Home Assistant CLI health check uses the Supervisor API endpoint
  - Use Debian Base Terminal 9.5.1.0, inheriting its shared ttyd launcher and configurable WebSocket ping interval

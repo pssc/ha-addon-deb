@@ -11,11 +11,13 @@ Install **abcde** from your Home Assistant app repository, start it, then open *
 The app stores its abcde configuration and sample at:
 
 ```text
-/config/addons_config/abcde/abcde.conf
-/config/addons_config/abcde/abcde_sample.conf
+/homeassistant/addons_config/abcde/abcde.conf
+/homeassistant/addons_config/abcde/abcde_sample.conf
 ```
 
 Edit `abcde.conf` to configure CD reading, output formats, and tagging. The default file is copied into place the first time the app starts.
+
+The former `/config/addons_config` path remains available as a compatibility link for existing user scripts.
 
 ## App options
 
