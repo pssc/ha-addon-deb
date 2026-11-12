@@ -10,7 +10,7 @@ ARG BUILD_ARCH
 # renovate: datasource=github-releases depName=tsl0922/ttyd
 ARG TTYD_VERSION=1.7.4
 # renovate: datasource=github-releases depName=home-assistant/cli
-ARG HA_CLI_VERSION=5.6.0
+ARG HA_CLI_VERSION=5.7.0
 # renovate: datasource=pypi depName=homeassistant-cli
 ARG HOMEASSISTANT_CLI_VERSION=0.9.6
 
